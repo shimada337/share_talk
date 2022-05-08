@@ -1,30 +1,34 @@
 Rails.application.routes.draw do
+  root to: 'homes#top'
+  
+  devise_for :users, skip: [:passwords], controllers: {
+   registrations: "user/registrations",
+   sessions: 'user/sessions'
+  }
+  
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+   sessions: "admin/sessions"
+  }
+  
   namespace :admin do
-    get 'posts/index'
-    get 'posts/show'
+    resources :posts, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :house_members, only: [:destroy]
+    resources :post_comments, only: [:destroy]
   end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
+  
+  scope module: "user" do 
+    patch "/users/out" => "users#out"
+    resources :users, only: [:index, :show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+      resources :house_members, only: [:new, :edit, :update, :create, :destroy]
+    end
+    resources :posts do
+    resource :favorites, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
+    end
   end
-  namespace :user do
-    get 'house_members/new'
-    get 'house_members/edit'
-  end
-  namespace :user do
-    get 'posts/new'
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/edit'
-  end
-  namespace :user do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
-  get 'homes/top'
-  devise_for :admins
-  devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
