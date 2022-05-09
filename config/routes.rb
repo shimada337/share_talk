@@ -26,8 +26,8 @@ Rails.application.routes.draw do
       resources :house_members, only: [:new, :edit, :update, :create, :destroy]
     end
     resources :posts do
-    resource :favorites, only: [:create, :destroy]
-    resources :post_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
