@@ -8,9 +8,11 @@
         <%= post.user.name %>
       <% end %>
     </div>
-    <div class="row">
-      <%= image_tag post.get_image(500,500) %>
-    </div>
+    <%= link_to post_path(post) do %>
+      <div class="row">
+        <%= image_tag post.get_image(500,500), class: "mx-auto" %>
+      </div>
+    <% end %>
     <div class="row">
       <%= post.body %>
     </div>
