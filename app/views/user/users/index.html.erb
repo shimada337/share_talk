@@ -1,2 +1,17 @@
-<h1>User::Users#index</h1>
-<p>Find me in app/views/user/users/index.html.erb</p>
+<div class="container">
+  <h2>ユーザー一覧</h2>
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-3">
+        <%= image_tag user.get_profile_image(100,100) %>
+      </div>
+      <div class="col-3">
+        <%= link_to user_path(user) do %>
+          <%= user.name %>
+        </div>
+      <% end %>
+      <div class="col-2"><%= user.area %></div>
+      <div class="col-2">フォローするorフォロー外す</div>
+    <% end %>
+  </div>
+</div>

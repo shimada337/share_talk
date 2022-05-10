@@ -3,13 +3,13 @@
   <%= link_to '新規投稿する', new_post_path %>
   <% @posts.each do |post| %>
     <div class="row">
-      <!--<%#= image_tag post.user.profile_image %>-->
+      <%= image_tag post.user.get_profile_image(100,100) %>
       <%= link_to user_path(post) do %>
         <%= post.user.name %>
       <% end %>
     </div>
     <div class="row">
-      <%= image_tag post.get_image(500,500) %>
+      <%= image_tag post.get_image(500,500), class: "mx-auto" %>
     </div>
     <div class="row">
       <%= post.body %>
