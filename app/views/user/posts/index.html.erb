@@ -4,9 +4,7 @@
   <% @posts.each do |post| %>
     <div class="row">
       <%= image_tag post.user.profile_image %>
-      <%= link_to user_path(post) do %>
-        <%= post.user.name %>
-      <% end %>
+      <%= link_to post.user.name, user_path(post.user_id) %>
     </div>
     <%= link_to post_path(post) do %>
       <div class="row">
