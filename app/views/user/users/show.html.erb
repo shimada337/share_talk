@@ -1,2 +1,17 @@
-<h1>User::Users#show</h1>
-<p>Find me in app/views/user/users/show.html.erb</p>
+<div class="container">
+  <h2>ユーザー詳細</h2>
+  <%= link_to "編集する", edit_user_path(@user) %>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <%= @user.name %>
+  <%= @user.self_introduction %>
+  <%= @user.position %>
+  <%= @user.area %>
+  
+  <!--<div class="wrap">-->
+  <!--  <ul id="tab-menu">-->
+  <!--    <li><a href="post_index" class="activ">投稿一覧</a></li>-->
+  <!--    <li><a href="house_member" class="">シェアハウスメンバー</a></li>-->
+  <!--    <li><a href="favorites" class="">いいね</a></li>-->
+  <!--  </ul>-->
+  <!--</div>-->
+</div>
