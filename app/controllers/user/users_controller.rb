@@ -1,10 +1,11 @@
 class User::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
+    #タブメニュー、@userの投稿一覧
     @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(5)
   end
 
