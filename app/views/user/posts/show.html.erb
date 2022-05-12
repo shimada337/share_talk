@@ -1,7 +1,7 @@
 <div class="container">
   <h2>投稿詳細</h2>
   <div class="row">
-    <%=image_tag @post.user.get_profile_image(100,100) %>
+    <%=image_tag @post.user.get_profile_image(50,50), class: "mb-2 mr-2" %>
     <%= @post.user.name %>
   </div>
   <div class="row">
@@ -17,13 +17,9 @@
     </div>
     <% if @post.user == current_user %>
       <%= link_to "編集", edit_post_path(@post) %>
-      <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "投稿を本当に削除しますか？" %>
     <% end %>
     
-    <%= form_with model: [@post, @post_comment] do |f| %>
-      <%= f.text_area :comment, class: "form-control ml-3" %>
-      <%= f.submit "送信", class: "btn" %>
-    <% end %>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -37,10 +33,16 @@
         <td><%= comment.user.name %></td>
         <td><%= comment.comment %></td>
         <% if comment.user == current_user %>
-          <td><%= link_to "削除", post_post_comment_path(@post, comment), method: :delete %></td>
+          <td><%= link_to "削除", post_post_comment_path(@post, comment), method: :delete, "data-confirm" => "コメントを本当に削除しますか？" %></td>
         <% end %>
       </tr>
     <% end %>
+    
+    <%= form_with model: [@post, @post_comment] do |f| %>
+      <%= f.text_area :comment, class: "form-control ml-3" %>
+      <%= f.submit "送信", class: "btn" %>
+    <% end %>
+    
       </tbody>
     </table>
   </div>
