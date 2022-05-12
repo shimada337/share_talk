@@ -11,9 +11,14 @@
   </head>
 
   <body>
-    <header>
+    <header class="sticky-top">
       <%= render 'layouts/header' %>
     </header>
-    <%= yield %>
+    <main class="bg-image">
+      <%= yield %>
+    </main>
+    <footer>
+      
+    </footer>
   </body>
 </html>
