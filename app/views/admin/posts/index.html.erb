@@ -1,2 +1,17 @@
-<h1>Admin::Posts#index</h1>
-<p>Find me in app/views/admin/posts/index.html.erb</p>
+<div class="container">
+  <h2>投稿一覧</h2>
+  <% @posts.each do |post| %>
+    <div class="row mb-3">
+      <%= image_tag post.user.get_profile_image(50,50), class: "mr-2" %>
+      <%= post.user.name %>
+    </div>
+    <%= link_to admin_post_path(post) do %>
+      <div class="row">
+        <%= image_tag post.get_image(300,300) %>
+      </div>
+      <div class="row mb-3">
+        <%= post.body %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
