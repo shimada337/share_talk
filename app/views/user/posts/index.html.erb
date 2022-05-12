@@ -7,7 +7,7 @@
       <%= link_to post.user.name, user_path(post.user_id) %>
     </div>
     <%= link_to post_path(post) do %>
-      <div class="row">
+      <div class="row posts">
         <%= image_tag post.get_image(500,500), class: "mx-auto" %>
       </div>
     <% end %>
