@@ -15,6 +15,7 @@
     <div class="favorite_buttons_<%= @post.id %>">
       <%= render "user/favorites/favorite", post: @post %>
     </div>
+    コメント<%= @post.post_comments.count %>
     <% if @post.user == current_user %>
       <%= link_to "編集", edit_post_path(@post) %>
       <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "投稿を本当に削除しますか？" %>
