@@ -1,6 +1,8 @@
 <div class="container">
   <h2>ユーザー詳細</h2>
-  <%= link_to "編集する", edit_user_path(@user) %>
+  <%= link_to edit_user_path(@user), class: "btn" do %>
+    <i class="fa-solid fa-user-gear"></i>
+  <% end %>
   <%= image_tag @user.get_profile_image(100,100) %>
   <div>
     <%= @user.name %>
