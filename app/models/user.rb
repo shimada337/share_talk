@@ -15,10 +15,6 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_one_attached :profile_image
   
-  def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
-  end
-  
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -46,6 +42,7 @@ class User < ApplicationRecord
     end
   end
   
+  #ユーザー住んでいる都道府県
   enum area:{
    "---":0,
    北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -59,6 +56,7 @@ class User < ApplicationRecord
    沖縄県:47
   }, _prefix: true
   
+  #ユーザー職業
   enum position:{
     "---":0,
     会社員:1,学生:2,フリーター:3,その他:4

@@ -2,10 +2,25 @@
   <h2>ユーザー詳細</h2>
   <%= link_to "編集する", edit_user_path(@user) %>
   <%= image_tag @user.get_profile_image(100,100) %>
-  <%= @user.name %>
-  <%= @user.self_introduction %>
+  <div>
+    <%= @user.name %>
+    <%= @user.self_introduction %>
+  </div>
   <%= @user.position %>
   <%= @user.area %>
+  <div>
+    <%= link_to "フォロワー", user_followers_path(@user), class: "btn" %>
+    <%= link_to "フォロー中", user_followings_path(@user), class: "btn" %>
+  </div>
+  <div>
+    <% unless current_user == @user %>
+      <% if current_user.following?(@user) %>
+        <%= link_to "フォロー外す", user_relationships_path(@user), method: :delete, class: "btn" %>
+      <% else %>
+        <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn" %>
+      <% end %>
+    <% end %>
+  </div>
   
   <div class="wrap">
     <ul id="tab-menu">
