@@ -25,4 +25,23 @@
         <%= f.submit '更新', class:"btn btn-secondary" %>
       </div>
       <% end %>
+      
+      <h2>ハウスメンバー一覧</h2>
+      <% @house_members.each do |house_member| %>
+        <%= house_member.name %>
+        <%= house_member.introduction %>
+        <%= house_member.position %>
+        <%= link_to "削除", user_house_member_path(house_member.id), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？" %>
+      <% end %>
+      
+      <h2>ハウスメンバー新規登録</h2>
+      <%= form_with model: @house_member, url: '/users/@user.id/house_members', method: :post do |f| %>
+        <%= f.label :name, "シェアハウスメンバーネーム" %>
+        <%= f.text_field :name, class: "form-control" %>
+        <%= f.label :introduction, "紹介" %>
+        <%= f.text_area :introduction, class: "form-control" %>
+        <%= f.label :position, "職業" %>
+        <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control" %>
+        <%= f.submit '新規登録' %>
+      <% end %>
 </div>

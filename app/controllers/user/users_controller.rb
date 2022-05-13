@@ -11,6 +11,8 @@ class User::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @house_member = HouseMember.new
+    @house_members = HouseMember.all
   end
   
   def update
