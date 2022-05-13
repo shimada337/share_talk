@@ -11,9 +11,9 @@ class User::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    #シェアハウスメンバーの登録と
+    #シェアハウスメンバーの登録と一覧
     @house_member = HouseMember.new
-    @house_members = HouseMember.all
+    @house_members = HouseMember.where(user_id: @user.id).all
   end
   
   def update

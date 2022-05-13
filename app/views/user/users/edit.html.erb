@@ -43,7 +43,7 @@
               <td><%= house_member.introduction %></td>
               <td><%= house_member.position %></td>
               <td><%= link_to "編集", edit_user_house_member_path(house_member), class: "btn" %></td>
-              <td><%= link_to "削除", user_house_member_path(house_member.id), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？", class: "btn" %></td>
+              <td><%= link_to "削除", user_house_member_path(house_member), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？", class: "btn" %></td>
             </tr>
           <% end %>
        </table>

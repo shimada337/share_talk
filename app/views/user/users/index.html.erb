@@ -14,7 +14,7 @@
         <% @users.each do |user| %>
           <tr>
             <td><%= image_tag user.get_profile_image(100,100) %></td>
-            <td><%= link_to user.name, user_path(user.id) %></td>
+            </div><td><%= link_to user.name, user_path(user.id) %></td>
             <td><%= user.area %></td>
             <td>
               <% unless current_user == user %>

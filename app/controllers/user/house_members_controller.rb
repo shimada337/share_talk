@@ -13,7 +13,7 @@ class User::HouseMembersController < ApplicationController
   end
   
   def destroy
-    @house_member = HouseMember.find(params[:id])
+    @house_member = HouseMember.find_by(user_id: current_user.id)
     @house_member.destroy
     redirect_to request.referer
   end
