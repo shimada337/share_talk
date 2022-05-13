@@ -1,6 +1,10 @@
 class HouseMember < ApplicationRecord
   belongs_to :user
   
+  validates :name, presence:true
+  validates :introduction, presence:true
+  validates :position, presence:true
+  
   #シェアハウスメンバー職業
   enum position:{
     "---":0,
