@@ -1,2 +1,39 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container">
+  <h2>投稿詳細</h2>
+  <div class="row">
+    <%=image_tag @post.user.get_profile_image(50,50), class: "mb-2 mr-2" %>
+    <%= link_to @post.user.name, user_path(@post.user.id) %>
+  </div>
+  <div class="row">
+    <%=image_tag @post.get_image(500,500) %>
+  </div>
+  <div class="row">
+    <%= @post.body %>
+  </div>
+  <div class="row">
+    <%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+    コメント<%= @post.post_comments.count %>
+      <%= link_to  admin_post_path(@post), method: :delete, "data-confirm" => "投稿を本当に削除しますか？", class: "btn" do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %>
+    
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>コメント投稿者</th>
+          <th>コメント内容</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @post_comments.each do |post_comment| %>
+      <tr>
+        <td><%= post_comment.user.name %></td>
+        <td><%= post_comment.comment %></td>
+        <td><%= link_to "削除", admin_post_comment_path(post_comment), method: :delete, "data-confirm" => "コメントを本当に削除しますか？", class: "btn" %></td>
+      </tr>
+    <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
