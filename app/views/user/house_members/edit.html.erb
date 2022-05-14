@@ -1,2 +1,12 @@
-<h1>User::HouseMembers#edit</h1>
-<p>Find me in app/views/user/house_members/edit.html.erb</p>
+<div class="container">
+  <h2>ハウスメンバー編集</h2>
+  <%= form_with model: [@user, @house_member], method: :patch do |f| %>
+    <%= f.label :name, "ハウスメンバーネーム" %>
+    <%= f.text_field :name, class: "form-control" %>
+    <%= f.label :introduction, "紹介" %>
+    <%= f.text_area :introduction, class: "form-control" %>
+    <%= f.label :position, "職業" %>
+    <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control" %>
+    <%= f.submit "変更", class: "btn" %>
+  <% end %>
+</div>

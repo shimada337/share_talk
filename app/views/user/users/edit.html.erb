@@ -1,6 +1,6 @@
 <div class="container">
   <h2>ユーザー編集</h2>
-  <%= form_with model: @user do |f| %>
+  <%= form_with model: @user, method: :patch do |f| %>
       <div class="form-group">
         <label for="user_name">ユーザーネーム</label>
         <%= f.text_field :name, placeholder:"名前", class:"form-control name" %>
@@ -42,7 +42,7 @@
               <td><%= house_member.introduction %></td>
               <td><%= house_member.position %></td>
               <td>
-                <%= link_to "編集", edit_user_house_member_path(house_member), class: "btn" %>
+                <%= link_to "編集", edit_user_house_member_path(current_user, house_member), class: "btn" %>
                 <%= link_to "削除", user_house_member_path(current_user, house_member), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？", class: "btn" %>
               </td>
             </tr>

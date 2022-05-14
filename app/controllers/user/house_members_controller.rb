@@ -3,6 +3,8 @@ class User::HouseMembersController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    @house_member = HouseMember.find(params[:id])
   end
   
   def create
@@ -16,6 +18,12 @@ class User::HouseMembersController < ApplicationController
     @house_member = HouseMember.find(params[:id])
     @house_member.destroy
     redirect_to request.referer
+  end
+  
+  def update
+    @house_member = HouseMember.find(params[:id])
+    @house_member.update(house_member_params)
+    redirect_to edit_user_path(current_user)
   end
   
   private

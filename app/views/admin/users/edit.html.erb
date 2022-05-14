@@ -1,6 +1,6 @@
 <div class="container">
   <h2><%= @user.name %>さんのユーザー情報編集</h2>
-  <%= form_with model: [:admin,@user] do |f| %>
+  <%= form_with model: [:admin, @user] do |f| %>
     <div class="field row">
       <div class="col-2"><%= f.label :user_id, "会員ID" %></div>
       <div class="col-6"><%= @user.id %></div>
