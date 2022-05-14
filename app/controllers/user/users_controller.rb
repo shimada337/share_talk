@@ -7,7 +7,10 @@ class User::UsersController < ApplicationController
     @user = User.find(params[:id])
     #タブメニュー、@userの投稿一覧
     @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(5)
+    #タブメニュー、@userのハウスメンバー
     @house_members = @user.house_members.all
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
   end
 
   def edit

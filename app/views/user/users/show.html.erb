@@ -4,6 +4,7 @@
     <%= link_to edit_user_path(@user), class: "btn" do %>
       <i class="fa-solid fa-user-gear"></i>
     <% end %>
+    <%= link_to '新規投稿する', new_post_path %>
   <% end %>
   <%= image_tag @user.get_profile_image(100,100) %>
   <div>
@@ -31,7 +32,7 @@
     <ul id="tab-menu">
       <li><a href="#post_index" class="active">投稿一覧</a></li>
       <li><a href="#house_member" class="">シェアハウスメンバー</a></li>
-      <li><a href="#favorites" class="">いいね</a></li>
+      <li><a href="#favorites" class="">いいねした投稿</a></li>
     </ul>
     
     <div id="tab-contents">
@@ -43,6 +44,7 @@
             </div>
           <% end %>
           <div class="row">
+            <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
             <%= post.body %>
           </div>
           <div class="row">
@@ -74,7 +76,27 @@
       </div>
       
       <div id="favorites" class="tab">
-        f
+        <% @favorite_posts.each do |favorite_post| %>
+          <div class="row">
+            <%= link_to user_path(favorite_post.user_id) do %>
+              <%= image_tag favorite_post.user.get_profile_image(50,50) %>
+              <%= favorite_post.user.name %>
+            <% end %>
+          </div>
+          <%= link_to post_path(favorite_post) do %>
+            <div class="row posts">
+              <%= image_tag favorite_post.get_image(200,200), class: "mx-auto" %>
+            </div>
+          <% end %>
+          <div class="row">
+            <%= favorite_post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+            <%= favorite_post.body %>
+          </div>
+          <div class="row">
+            <%= favorite_post.favorites.count %> いいね
+            コメント <%= favorite_post.post_comments.count %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
