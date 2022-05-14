@@ -7,6 +7,7 @@ class User::UsersController < ApplicationController
     @user = User.find(params[:id])
     #タブメニュー、@userの投稿一覧
     @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(5)
+    @house_members = @user.house_members.all
   end
 
   def edit
