@@ -1,2 +1,34 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+  <h2><%= @user.name %>さんのユーザー情報編集</h2>
+  <%= form_with model: [:admin,@user] do |f| %>
+    <div class="field row">
+      <div class="col-2"><%= f.label :user_id, "会員ID" %></div>
+      <div class="col-6"><%= @user.id %></div>
+    </div>
+    <div class="field row">
+      <div class="col-2"><%= f.label :name, "氏名" %></div>
+      <div class="col-6 form-inline"><%= f.text_field :name, class: "form-control mr-2 mb-2" %></div>
+    </div>
+    <div class="field row">
+      <div class="col-2"><%= f.label :email, "メールアドレス" %></div>
+      <div class="col-6"><%= f.email_field :email, autocomplete: "email", class: "form-control mb-2" %></div>
+    </div>
+    <div class="field row">
+      <div class="col-2"><%= f.label :self_introduction, "自己紹介" %></div>
+      <div class="col-6"><%= f.text_area :self_introduction, class: "form-control mb-2" %></div>
+    </div>
+    <div class="field row">
+      <div class="col-2"><%= f.label :is_deleted, "会員ステータス" %></div>
+      <div class="col-6">
+        <%= f.radio_button :is_deleted, false %>
+        <%= f.label :is_deleted, "有効", value: false %>
+        <%= f.radio_button :is_deleted, true %>
+        <%= f.label :is_deleted, "退会", value: true %>
+       </div>
+    </div>
+    <div class="field row">
+      <div class="col-2"></div>
+      <div class="col-6 mb-5 mt-3"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
+    </div>
+  <% end %>
+</div>
