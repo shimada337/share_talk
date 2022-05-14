@@ -34,7 +34,6 @@
               <th>紹介</th>
               <th>職業</th>
               <th></th>
-              <th></th>
             </tr>
           </thead>
           <% @house_members.each do |house_member| %>
@@ -42,8 +41,10 @@
               <td><%= house_member.name %></td>
               <td><%= house_member.introduction %></td>
               <td><%= house_member.position %></td>
-              <td><%= link_to "編集", edit_user_house_member_path(house_member), class: "btn" %></td>
-              <td><%= link_to "削除", user_house_member_path(house_member), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？", class: "btn" %></td>
+              <td>
+                <%= link_to "編集", edit_user_house_member_path(house_member), class: "btn" %>
+                <%= link_to "削除", user_house_member_path(current_user, house_member), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？", class: "btn" %>
+              </td>
             </tr>
           <% end %>
        </table>
