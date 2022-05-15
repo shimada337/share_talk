@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :user do
+    get 'chats/show'
+  end
   root to: 'homes#top'
   
   devise_for :users, skip: [:passwords], controllers: {
@@ -29,6 +32,9 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
+    
+    get 'chat/:id', to: 'chats#show', as: 'chat'
+    resources :chats, only: [:create]
   end
   
   devise_scope :user do

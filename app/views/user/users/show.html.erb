@@ -9,6 +9,9 @@
   <% end %>
   <% end %>
   <%= image_tag @user.get_profile_image(100,100) %>
+  <% unless current_user == @user %>
+    <%= link_to 'DM', chat_path(@user.id) %>
+  <% end %>
   <div>
     <%= @user.name %>
     <%= @user.self_introduction %>
