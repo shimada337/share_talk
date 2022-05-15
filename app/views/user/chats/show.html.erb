@@ -3,28 +3,30 @@
         <div class="col-xs-6">
             <h2><%= @user.name %></h2>
             
-            <table class="message table">
+            <table class="message table table-hover">
               <thead>
                 <tr>
-                  <th style="text-align: left; font-size: 20px;"><%= current_user.name %></th>
-                  <th style="text-align: right; font-size: 20px;"><%= @user.name %></th>
+                  <th class="my_chat"><%= current_user.name %></th>
+                  <th class="you_chat"><%= @user.name %></th>
                 </tr>
               </thead>
               <% @chats.each do |chat| %>
                 <% if chat.user_id == current_user.id %>
                 <tbody>
                   <tr>
-                    <th>
-                      <p style="text-align: left;"><%= chat.message %></p>
-                    </th>
-                    <th></th>
+                    <td>
+                      <p class="my_chat"><%= chat.message %></p>
+                      <p class="my_chat"><%= chat.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+                    </td>
+                    <td></td>
                   </tr>
                 <% else %>
                   <tr>
-                    <th></th>
-                    <th>
-                      <p style="text-align: right;"><%= chat.message %></p>
-                    </th>
+                    <td></td>
+                    <td>
+                      <p class="you_chat"><%= chat.message %></p>
+                      <p class="you_chat"><%= chat.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+                    </td>
                   </tr>
                 </tbody>
                 <% end %>
@@ -32,8 +34,8 @@
             </table>
             
             <%= form_with model: @chat do |f| %>
-              <div class="form-inline">
-                <%= f.text_field :message, class: "form-control" %>
+              <div class="form-inline my-3">
+                <%= f.text_area :message, placeholder: "メッセージを入力して下さい", class: "form-control col-5" %>
                 <%= f.hidden_field :room_id %>
                 <%= f.submit "送信", class:"btn btn-sm btn-success chat-btn ml-1" %>
               </div>

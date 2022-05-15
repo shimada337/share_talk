@@ -10,7 +10,9 @@
   <% end %>
   <%= image_tag @user.get_profile_image(100,100) %>
   <% unless current_user == @user %>
-    <%= link_to 'DM', chat_path(@user.id) %>
+    <%= link_to chat_path(@user.id) do %>
+      <i class="fa-solid fa-envelope"></i> メッセージを送る
+    <% end %>
   <% end %>
   <div>
     <%= @user.name %>
