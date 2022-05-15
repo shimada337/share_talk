@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="my-3">
+  <div class="py-3">
     <%= search_form_for @search_post, class: "form-inline" do |f| %>
       <%= f.text_field :body_cont, class: "form-control mx-1", placeholder: "投稿を検索" %>
       <%= f.submit "検索", class: "btn btn-outline-success" %>
@@ -25,7 +25,8 @@
       <div class="favorite_buttons_<%= post.id %>">
         <%= render "user/favorites/favorite", post: post %>
       </div>
-      コメント<%= post.post_comments.count %> <i class="fa-solid fa-comment"></i>
+      コメント<%= post.post_comments.count %> <i class="fa-solid fa-comment ml-1"></i>
     </div>
   <% end %>
+  <%= paginate @posts %>
 </div>

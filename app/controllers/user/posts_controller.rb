@@ -11,8 +11,8 @@ class User::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order(created_at: :desc)
-    @search_posts = @search_post.result.page(params[:page])
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
+    @search_posts = @search_post.result.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def show

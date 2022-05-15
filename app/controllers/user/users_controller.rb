@@ -9,7 +9,7 @@ class User::UsersController < ApplicationController
    
   def index
     @users = User.all.order(created_at: :desc).page(params[:page]).per(5)
-    @search_users = @search_user.result.page(params[:page]).per(5)
+    @search_users = @search_user.result.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def show
