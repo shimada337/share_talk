@@ -1,9 +1,15 @@
 class User::UsersController < ApplicationController
    before_action :authenticate_user!
    before_action :ensure_guest_user, only: [:edit]
+   before_action :search
+
+  def search
+    @search_user = User.ransack(params[:q])
+  end
    
   def index
-    @users = User.all.page(params[:page]).per(10)
+    @users = User.all.order(created_at: :desc).page(params[:page]).per(5)
+    @search_users = @search_user.result.page(params[:page]).per(5)
   end
 
   def show

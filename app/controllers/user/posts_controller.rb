@@ -1,11 +1,18 @@
 class User::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :search
+  
+  def search
+    @search_post = Post.ransack(params[:q])
+  end
+  
   def new
     @post = Post.new
   end
 
   def index
     @posts = Post.all.order(created_at: :desc)
+    @search_posts = @search_post.result.page(params[:page])
   end
 
   def show
