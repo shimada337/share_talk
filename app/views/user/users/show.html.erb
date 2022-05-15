@@ -1,18 +1,22 @@
 <div class="container">
   <h2>ユーザー詳細</h2>
+  <% if @user.name != "guestuser" %>
   <% if current_user == @user %>
     <%= link_to edit_user_path(@user), class: "btn" do %>
       <i class="fa-solid fa-user-gear"></i>
     <% end %>
     <%= link_to '新規投稿する', new_post_path %>
   <% end %>
+  <% end %>
   <%= image_tag @user.get_profile_image(100,100) %>
   <div>
     <%= @user.name %>
     <%= @user.self_introduction %>
   </div>
-  <%= @user.position %>
-  <%= @user.area %>
+   <% if @user.name != "guestuser" %>
+    <%= @user.position %>
+    <%= @user.area %>
+  <% end %>
   <div>
     <%= link_to "フォロワー", user_followers_path(@user), class: "btn" %>
     <%= link_to "フォロー中", user_followings_path(@user), class: "btn" %>

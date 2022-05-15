@@ -45,7 +45,7 @@
           </li>
         <% else %>
           <li>
-            <%= link_to users_guest_sign_in_path, class: "nav-link" do %>
+            <%= link_to users_guest_sign_in_path, class: "nav-link", method: :post do %>
               <i class="fa-solid fa-user-lock"></i> ゲストログイン
             <% end %>
           </li>

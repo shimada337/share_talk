@@ -14,7 +14,8 @@
     <header class="sticky-top">
       <%= render 'layouts/header' %>
     </header>
-    <main>
+    <main class="bg-light">
+      <%= flash[:notice] %>
       <%= yield %>
     </main>
     <footer>
