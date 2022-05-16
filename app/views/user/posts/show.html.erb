@@ -47,7 +47,9 @@
     </table>
   </div>
   <%= form_with model: [@post, @post_comment] do |f| %>
-    <%= f.text_area :comment, class: "form-control ml-3" %>
-    <%= f.submit "送信", class: "btn" %>
+    <div class="form-inline my-3">
+      <%= f.text_area :comment, placeholder: "コメントを入力して下さい", class: "form-control col-6" %>
+      <%= f.submit "送信", class: "btn ml-1" %>
+    </div>
   <% end %>
 </div>
