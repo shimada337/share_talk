@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       resources :house_members, only: [:new, :edit, :update, :create, :destroy]
+      resources :notifications, only: [:index]
     end
     resources :posts do
       resource :favorites, only: [:create, :destroy]
