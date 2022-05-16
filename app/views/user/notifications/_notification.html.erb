@@ -3,8 +3,8 @@
   
   <%= link_to user_path(visitor) do %>
     <%= image_tag visitor.get_profile_image(30,30) %>
-    <%= visitor.name %> さんが
-  <% end %>
+    <%= visitor.name %>
+  <% end %>が
   <% case notification.action %>
     <% when 'follow' then %>
       あなたをフォローしました
@@ -12,6 +12,15 @@
       <%= link_to 'あなたの投稿', notification.post %>
       にいいねしました
     <% when 'post_comment' then %>
-      <%= link_to "あなたの投稿", notification.post %>
-      にコメントしました
+      <% if notification.post.user_id == visited.id %>
+        <%= link_to "あなたの投稿", notification.post %>にコメントしました
+      <% else %>
+        <%= image_tag notification.post.user.get_profile_image(30,30) %>
+        <%= notification.post.user.name %>の
+        <%= link_to "投稿", post_path(notification.post) %>
+        にコメントしました
+      <% end %>
+      <!----できれば内容表示したい-->
+      <!--<p><%#= notification.post_comment %></p>-->
   <% end %>
+  <%= time_ago_in_words(notification.created_at) + '前' %>
