@@ -45,9 +45,11 @@ class Post < ApplicationRecord
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, post_comment_id, temp_id['user_id'])
     end
+    #誰もコメントしていない場合に投稿者にのみ通知
      save_notification_comment!(current_user, post_comment_id, user_id) if temp_ids.blank?
   end
   
+  #コメントを送るたびに通知
   def save_notification_comment!(current_user, post_comment_id, visited_id)
     notification = current_user.active_notifications.new(
       post_id: id,

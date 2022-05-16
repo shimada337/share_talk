@@ -7,6 +7,7 @@ class User::PostCommentsController < ApplicationController
     @comment.post_id = post.id
     @comment.save
     post.create_notification_comment!(current_user, @comment.id)
+    post.save_notification_comment!(current_user, @comment.id, post.user_id)
     redirect_to request.referer
   end
 

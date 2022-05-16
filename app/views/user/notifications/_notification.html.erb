@@ -13,13 +13,13 @@
       にいいねしました
     <% when 'post_comment' then %>
       <% if notification.post.user_id == visited.id %>
-        <%= link_to "あなたの投稿", notification.post %>にコメントしました
+        <%= link_to "あなたの投稿", notification.post %>
       <% else %>
         <%= image_tag notification.post.user.get_profile_image(30,30) %>
         <%= notification.post.user.name %>の
         <%= link_to "投稿", post_path(notification.post) %>
-        にコメントしました
       <% end %>
+      にコメントしました
       <!----できれば内容表示したい-->
       <!--<p><%#= notification.post_comment %></p>-->
   <% end %>
