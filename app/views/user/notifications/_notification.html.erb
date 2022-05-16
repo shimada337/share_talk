@@ -1,0 +1,17 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+  
+  <%= link_to user_path(visitor) do %>
+    <%= image_tag visitor.get_profile_image(30,30) %>
+    <%= visitor.name %> さんが
+  <% end %>
+  <% case notification.action %>
+    <% when 'follow' then %>
+      あなたをフォローしました
+    <% when 'favorite' then %>
+      <%= link_to 'あなたの投稿', notification.post %>
+      にいいねしました
+    <% when 'post_comment' then %>
+      <%= link_to "あなたの投稿", notification.post %>
+      にコメントしました
+  <% end %>

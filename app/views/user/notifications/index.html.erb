@@ -1,23 +1,7 @@
 <div classs="container">
   <h2 class="text-center">通知</h2>
   <% if @notifications.exists? %>
-    <% visitor = notification.visitor %>
-    <% visited = notification.visited %>
-    
-    <%= link_to user_path(visitor) do %>
-      <%= image_tag profile_image(30,30) %>
-      <%= visitor.name %> さんが
-    <% end %>
-    <% case notification.action %>
-      <% when 'follw' then %>
-        あなたをフォローしました
-      <% when 'fovorite' then %>
-        <%= link_to 'あなたの投稿', notification.post %>
-        にいいねしました
-      <% when 'post_comment' then %>
-        <%= link_to "あなたの投稿", notification.post %>
-        にコメントしました
-    <% end %>
+    <%= render partial: "notification", collection: @notifications %>
   <% else %>
     <p>通知はありません</p>
   <% end %>
