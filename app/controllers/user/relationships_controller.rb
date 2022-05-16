@@ -2,7 +2,7 @@ class User::RelationshipsController < ApplicationController
   # フォローするとき
   def create
      user = User.find(params[:user_id])
-     current_user.follow(user)
+     current_user.follow(params[:user_id])
      user.create_notification_follow!(current_user)
     # user = User.find_by(params[:relationship][:follower_id])
     # current_user.follow(params[:user_id])
