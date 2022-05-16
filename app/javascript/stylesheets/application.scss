@@ -4,6 +4,7 @@
 $cWhite: white;
 $cBlack: black;
 $cGreen: #008000;
+$cOrange: #efa04c;
 
 .btns {
   background-color: $cWhite;
@@ -69,6 +70,10 @@ table {
 
 .you_chat {
   text-align: right;
+}
+
+.n-circle {
+  color: $cOrange;
 }
 
 // .wrap {

@@ -24,6 +24,9 @@
           </li>
           <li>
             <%= link_to user_notifications_path(current_user), class: "nav-link" do %>
+            <% if unchecked_notifications.any? %>
+              <i class="fa-solid fa-circle n-circle"></i>
+            <% end %>
               <i class="fa-solid fa-bell"></i> 通知
             <% end %>
           </li>
