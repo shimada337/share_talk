@@ -19,7 +19,7 @@ class User::UsersController < ApplicationController
     #タブメニュー、@userのハウスメンバー
     @house_members = @user.house_members.all
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites).order#投稿順にしたい
+    @favorite_posts = Post.find(favorites)#投稿順にしたい
   end
 
   def edit
