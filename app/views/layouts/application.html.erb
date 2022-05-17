@@ -11,17 +11,19 @@
   </head>
 
   <body>
-    <header class="sticky-top">
-      <%= render 'layouts/header' %>
-    </header>
-    <main class="bg-light">
-      <%= flash[:notice] %>
-      <%= yield %>
-    </main>
-    <footer>
-      <div class="py-3 bg-secondary text-center">
-        <p class="text-white-50 small">&copy; 2022 ShareTalk</p>
-      </div>
-    </footer>
+    <div class="footer_fixed">
+      <header class="sticky-top">
+        <%= render 'layouts/header' %>
+      </header>
+      <main>
+        <%= flash[:notice] %>
+        <%= yield %>
+      </main>
+      <footer>
+        <div class="py-3 bg-secondary text-center">
+          <p class="text-white-50 small">&copy; 2022 ShareTalk</p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
