@@ -1,10 +1,12 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
   
-  <%= link_to user_path(visitor) do %>
-    <%= image_tag visitor.get_profile_image(30,30) %>
-    <%= visitor.name %>
-  <% end %>が
+  <% unless current_user == visitor %>
+    <%= link_to user_path(visitor) do %>
+      <%= image_tag visitor.get_profile_image(30,30) %>
+      <%= visitor.name %>
+    <% end %>が
+  <% end %>
   <% case notification.action %>
     <% when 'follow' then %>
       あなたをフォローしました
