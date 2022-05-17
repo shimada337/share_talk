@@ -13,7 +13,6 @@ class User::HouseMembersController < ApplicationController
     if @house_member.save
       redirect_to request.referer, notice: 'ハウスメンバーを登録しました'
     else
-      #renderにしたい
       flash[:alert] = 'ハウスメンバーの登録に失敗しました'
       redirect_to  request.referer
     end
@@ -31,7 +30,6 @@ class User::HouseMembersController < ApplicationController
     if @house_member.update(house_member_params)
       redirect_to edit_user_path(current_user), notice: 'ハウスメンバーの情報を更新しました'
     else
-      #renderにしたい
       flash[:alert] = 'ハウスメンバーの情報更新に失敗しました'
       redirect_to  request.referer
     end

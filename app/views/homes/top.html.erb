@@ -1,18 +1,58 @@
-<div class="container mt-3">
-  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+<!--<div class="container mt-3">-->
+<!--  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">-->
+<!--  <div class="carousel-indicators">-->
+<!--    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>-->
+<!--    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>-->
+<!--    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
+<!--  </div>-->
+<!--  <div class="carousel-inner">-->
+<!--    <div class="carousel-item active">-->
+<!--      <%#= image_tag 'beautiful-home.jpg', class: "d-block w-100" %>-->
+<!--    </div>-->
+<!--    <div class="carousel-item">-->
+<!--      <%#= image_tag 'living-room.jpg', class: "d-block w-100" %>-->
+<!--    </div>-->
+<!--    <div class="carousel-item">-->
+<!--      <%#= image_tag 'kitchen.jpg', class: "d-block w-100" %>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">-->
+<!--    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--    <span class="visually-hidden">Previous</span>-->
+<!--  </button>-->
+<!--  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">-->
+<!--    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--    <span class="visually-hidden">Next</span>-->
+<!--  </button>-->
+<!--</div>-->
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <%= image_tag 'beautiful-home.jpg', class: "d-block w-100" %>
+      <%= image_tag 'beautiful-home.jpg', class: "bd-placeholder-img bd-placeholder-img-lg d-block w-100" %>
     </div>
     <div class="carousel-item">
-      <%= image_tag 'living-room.jpg', class: "d-block w-100" %>
+      <%= image_tag 'living-room.jpg', class: "bd-placeholder-img bd-placeholder-img-lg d-block w-100" %>
     </div>
     <div class="carousel-item">
-      <%= image_tag 'kitchen.jpg', class: "d-block w-100" %>
+      <%= image_tag 'kitchen.jpg', class: "bd-placeholder-img bd-placeholder-img-lg d-block w-100" %>
     </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 </div>
     <h1>シェアハウスの日常を投稿しよう！</h1>
     <p>ShareTalkはシェアハウスをしている人たちのSNSサイトです</p>
   </div>
-</div>

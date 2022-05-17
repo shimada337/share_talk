@@ -8,7 +8,6 @@ class User::PostCommentsController < ApplicationController
     if @comment.save
       redirect_to request.referer, notice: 'コメントを送信しました'
     else
-      #renderにしたい
       flash[:alert] = 'コメントの送信に失敗しました'
       redirect_to request.referer
     end

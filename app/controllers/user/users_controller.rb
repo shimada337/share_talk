@@ -18,8 +18,9 @@ class User::UsersController < ApplicationController
     @posts = @user.posts.all.order(created_at: :desc).page(params[:my_posts]).per(20)
     #タブメニュー、@userのハウスメンバー
     @house_members = @user.house_members.all
-    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites) #.page(params[:favorite_posts]).per(2)
+    # favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    # @favorite_posts = Post.where(favorites).page(params[:favorite_posts]).per(2)
+    @favorite_posts = Post.joins(:favorites).where(favorites: {user_id: @user.id}).page(params[:favorite_posts]).per(30)
   end
 
   def edit
