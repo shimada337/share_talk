@@ -61,6 +61,7 @@
             コメント <%= post.post_comments.count %>
           </div>
         <% end %>
+        <%= paginate @posts, param_name: 'my_posts' %>
       </div>
       
       <div id="house_member" class="tab">
@@ -106,6 +107,7 @@
             コメント <%= favorite_post.post_comments.count %>
           </div>
         <% end %>
+        <%#= paginate @favorite_posts, param_name: 'favorite_posts' %>
       </div>
     </div>
   </div>
