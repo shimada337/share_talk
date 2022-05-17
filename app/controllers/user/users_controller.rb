@@ -15,7 +15,7 @@ class User::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     #タブメニュー、@userの投稿一覧
-    @posts = @user.posts.all.order(created_at: :desc).page(params[:my_posts]).per(1)
+    @posts = @user.posts.all.order(created_at: :desc).page(params[:my_posts]).per(20)
     #タブメニュー、@userのハウスメンバー
     @house_members = @user.house_members.all
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)

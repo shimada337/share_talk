@@ -17,8 +17,10 @@ class User::PostCommentsController < ApplicationController
   end
 
   def destroy
-    PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    redirect_to request.referer
+    post_comment = PostComment.find_by(id: params[:id], post_id: params[:post_id])
+    if post_comment.destroy
+      redirect_to request.referer, notice: 'コメントを削除しました'
+    end
   end
 
   private

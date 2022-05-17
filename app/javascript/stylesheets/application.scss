@@ -52,6 +52,19 @@ $cOrange: #efa04c;
   }
 }
 
+.flash {
+  color: $cWhite;
+  text-align: center;
+}
+
+.notice {
+  background-color: lightblue;
+}
+
+.alert {
+  background-color: orange;
+}
+
 // .footer_fixed {
 // min-hight: 100vh;
 // position: relative;
