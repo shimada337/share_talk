@@ -31,8 +31,14 @@ class User::UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'ユーザー情報を更新しました'
+    else
+      @house_member = HouseMember.new
+      @house_members = HouseMember.where(user_id: @user.id).all
+      flash.now[:alert] = 'ユーザー情報の更新に失敗しました'
+      render :edit
+    end
   end
   
   private

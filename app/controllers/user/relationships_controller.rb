@@ -2,17 +2,20 @@ class User::RelationshipsController < ApplicationController
   # フォローするとき
   def create
      user = User.find(params[:user_id])
-     current_user.follow(params[:user_id])
+     if current_user.follow(params[:user_id])
+       redirect_to request.referer, notice: "#{user.name}をフォローしました"
+     end
      user.create_notification_follow!(current_user)
     # user = User.find_by(params[:relationship][:follower_id])
     # current_user.follow(params[:user_id])
     # user.create_notification_follow!(current_user)
-    redirect_to request.referer
   end
   # フォロー外すとき
   def destroy
-    current_user.unfollow(params[:user_id])
-    redirect_to request.referer  
+    user = User.find(params[:user_id])
+    if current_user.unfollow(params[:user_id])
+      redirect_to request.referer, notice: "#{user.name}のフォローを外しました"
+    end
   end
   # フォロー一覧
   def followings

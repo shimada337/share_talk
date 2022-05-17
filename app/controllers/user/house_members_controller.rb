@@ -10,20 +10,31 @@ class User::HouseMembersController < ApplicationController
   def create
     @house_member = HouseMember.new(house_member_params)
     @house_member.user_id = current_user.id
-    @house_member.save
-    redirect_to request.referer
+    if @house_member.save
+      redirect_to request.referer, notice: 'ハウスメンバーを登録しました'
+    else
+      #renderにしたい
+      flash[:alert] = 'ハウスメンバーの登録に失敗しました'
+      redirect_to  request.referer
+    end
   end
   
   def destroy
     @house_member = HouseMember.find(params[:id])
-    @house_member.destroy
-    redirect_to request.referer
+    if @house_member.destroy
+      redirect_to request.referer, notice: 'ハウスメンバーを削除しました'
+    end
   end
   
   def update
     @house_member = HouseMember.find(params[:id])
-    @house_member.update(house_member_params)
-    redirect_to edit_user_path(current_user)
+    if @house_member.update(house_member_params)
+      redirect_to edit_user_path(current_user), notice: 'ハウスメンバーの情報を更新しました'
+    else
+      #renderにしたい
+      flash[:alert] = 'ハウスメンバーの情報更新に失敗しました'
+      redirect_to  request.referer
+    end
   end
   
   private

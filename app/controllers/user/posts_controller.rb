@@ -25,23 +25,32 @@ class User::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
   
-  def update
-    @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to post_path(@post)
-  end
-  
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path, notice: '投稿しました'
+    else
+      flash.now[:alert] = '投稿に失敗しました'
+      render :new
+    end
+  end
+  
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: '投稿を更新しました'
+    else
+      flash.now[:alert] = '投稿の更新に失敗しました'
+      render :edit
+    end
   end
   
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    if @post.destroy
+      redirect_to posts_path, notice: '投稿を削除しました'
+    end
   end
   
   private
