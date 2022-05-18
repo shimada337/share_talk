@@ -22,10 +22,12 @@
     </div>
   </div>
   <% unless current_user == @user %>
+    <% if (current_user.following? @user) && (@user.following? current_user) %>
       <%= link_to chat_path(@user.id), class: "btn" do %>
         <i class="fa-solid fa-envelope"></i> メッセージを送る
       <% end %>
     <% end %>
+  <% end %>
   <div>
     <%= link_to "フォロワー", user_followers_path(@user), class: "btn" %>
     <%= @user.followers.count %>
