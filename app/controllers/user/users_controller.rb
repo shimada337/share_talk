@@ -20,7 +20,7 @@ class User::UsersController < ApplicationController
     @house_members = @user.house_members.all
     # favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     # @favorite_posts = Post.where(favorites).page(params[:favorite_posts]).per(2)
-    @favorite_posts = Post.joins(:favorites).where(favorites: {user_id: @user.id}).page(params[:favorite_posts]).per(30)
+    @favorite_posts = Post.joins(:favorites).where(favorites: {user_id: @user.id}).order(created_at: :desc).page(params[:favorite_posts]).per(30)
   end
 
   def edit

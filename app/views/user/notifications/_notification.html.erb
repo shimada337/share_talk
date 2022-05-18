@@ -1,28 +1,34 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
   
-  <% unless current_user == visitor %>
-    <%= link_to user_path(visitor) do %>
-      <%= image_tag visitor.get_profile_image(30,30) %>
-      <%= visitor.name %>
-    <% end %>が
-  <% end %>
-  <% case notification.action %>
-    <% when 'follow' then %>
-      あなたをフォローしました
-    <% when 'favorite' then %>
-      <%= link_to 'あなたの投稿', notification.post %>
-      にいいねしました
-    <% when 'post_comment' then %>
-      <% if notification.post.user_id == visited.id %>
-        <%= link_to "あなたの投稿", notification.post %>
-      <% else %>
-        <%= image_tag notification.post.user.get_profile_image(30,30) %>
-        <%= notification.post.user.name %>の
-        <%= link_to "投稿", post_path(notification.post) %>
+  <div class="container mb-2 pb-2 border-bottom hover">
+    <div class="row">
+      <% unless current_user == visitor %>
+        <%= link_to user_path(visitor) do %>
+          <%= image_tag visitor.get_profile_image(50,50) %>
+        <% end %>
+        <%= link_to visitor.name, user_path(visitor) %>が
       <% end %>
-      にコメントしました
-      <!----できれば内容表示したい-->
-      <!--<p><%#= notification.post_comment %></p>-->
-  <% end %>
-  <%= time_ago_in_words(notification.created_at) + '前' %>
+      <% case notification.action %>
+        <% when 'follow' then %>
+          あなたをフォローしました
+        <% when 'favorite' then %>
+          <%= link_to 'あなたの投稿', notification.post %>
+          にいいねしました
+        <% when 'post_comment' then %>
+          <% if notification.post.user_id == visited.id %>
+            <%= link_to "あなたの投稿", notification.post %>
+          <% else %>
+            <%= image_tag notification.post.user.get_profile_image(50,50) %>
+            <%= notification.post.user.name %>の
+            <%= link_to "投稿", post_path(notification.post) %>
+          <% end %>
+          にコメントしました
+          <!----できれば内容表示したい-->
+          <!--<%# if !@post_comment.nil? %>-->
+          <!--  <p class="moderate-font"><%#= @post_comment %></p>-->
+          <!--<%# end %>-->
+      <% end %>
+      <%= time_ago_in_words(notification.created_at) + '前' %>
+    </div>
+  </div>
