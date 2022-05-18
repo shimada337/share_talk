@@ -1,8 +1,8 @@
 class HouseMember < ApplicationRecord
   belongs_to :user
   
-  validates :name, presence:true
-  validates :introduction, presence:true
+  validates :name, presence:true, length: { maximum: 30 }
+  validates :introduction, presence:true, length: { maximum: 250 }
   validates :position, presence:true
   
   #シェアハウスメンバー職業

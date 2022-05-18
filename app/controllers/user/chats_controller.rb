@@ -19,8 +19,12 @@ class User::ChatsController < ApplicationController
   
   def create
     @chat = current_user.chats.new(chat_params)
-    @chat.save
-    redirect_to request.referer
+    if @chat.save
+      redirect_to request.referer, notice: 'メッセージを送信しました'
+    else
+      flash[:alert] = 'メッセージの送信に失敗しました'
+      redirect_to  request.referer
+    end
   end
   
   private

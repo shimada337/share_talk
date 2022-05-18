@@ -21,7 +21,8 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_one_attached :profile_image
-  validates :name, presence:true
+  validates :name, presence:true, length: { maximum: 30 }
+  validates :self_introduction, length: { maximum: 250 }
   
   def follow(user_id)
     relationships.create(followed_id: user_id)
