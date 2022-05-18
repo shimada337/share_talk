@@ -1,8 +1,14 @@
 <div class="container">
   <h2>投稿編集</h2>
   <%= form_with model: @post do |f| %>
+    <div class="row">
     <%= f.file_field :image, accept: "image/*" %>
-    <%= f.text_area :body, class: "form-control" %>
-    <%= f.submit '保存' %>
+  </div>
+  <div class="row">
+    <%= f.text_area :body, class: "form-control my-3" %>
+  </div>
+  <div class="row">
+    <%= f.submit '保存', class: "btn" %>
+  </div>
   <% end %>
 </div>
