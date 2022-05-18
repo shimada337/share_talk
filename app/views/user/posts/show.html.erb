@@ -1,7 +1,7 @@
 <div class="container">
   <h2>投稿詳細</h2>
   <div class="row">
-    <%=image_tag @post.user.get_profile_image(50,50), class: "mb-2 mr-2" %>
+    <%=image_tag @post.user.get_profile_image(50,50), class: "mb-2 mr-2 user_profile" %>
     <%= link_to @post.user.name, user_path(@post.user.id) %>
   </div>
   <div class="row">

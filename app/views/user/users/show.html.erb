@@ -8,23 +8,29 @@
     <%= link_to '新規投稿する', new_post_path %>
   <% end %>
   <% end %>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <% unless current_user == @user %>
-    <%= link_to chat_path(@user.id) do %>
-      <i class="fa-solid fa-envelope"></i> メッセージを送る
-    <% end %>
-  <% end %>
-  <div>
-    <%= @user.name %>
-    <%= @user.self_introduction %>
+  <div class="row py-2">
+    <div class="col-2 text-center">
+      <%= image_tag @user.get_profile_image(100,100), class: "user_profile" %>
+    </div>
+    <div class="col-8 border">
+    <%= @user.name %><br>
+    <%= @user.self_introduction %><br>
+     <% if @user.name != "guestuser" %>
+        <span>職業： </span><%= @user.position %><br>
+        <span>シェアハウスしている都道府県： </span><%= @user.area %>
+     <% end %>
+    </div>
   </div>
-   <% if @user.name != "guestuser" %>
-    <%= @user.position %>
-    <%= @user.area %>
-  <% end %>
+  <% unless current_user == @user %>
+      <%= link_to chat_path(@user.id), class: "btn" do %>
+        <i class="fa-solid fa-envelope"></i> メッセージを送る
+      <% end %>
+    <% end %>
   <div>
     <%= link_to "フォロワー", user_followers_path(@user), class: "btn" %>
+    <%= @user.followers.count %>
     <%= link_to "フォロー中", user_followings_path(@user), class: "btn" %>
+    <%= @user.followings.count %>
   </div>
   <div>
     <% unless current_user == @user %>
@@ -57,7 +63,7 @@
             <%= post.body %>
           </div>
           <div class="row">
-            <%= post.favorites.count %> いいね
+            いいね <%= post.favorites.count %>
             コメント <%= post.post_comments.count %>
           </div>
         <% end %>
@@ -103,7 +109,7 @@
             <%= favorite_post.body %>
           </div>
           <div class="row">
-            <%= favorite_post.favorites.count %> いいね
+            いいね <%= favorite_post.favorites.count %>
             コメント <%= favorite_post.post_comments.count %>
           </div>
         <% end %>

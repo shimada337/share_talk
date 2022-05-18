@@ -19,7 +19,7 @@
       <div class="row">
         <% @search_users.each do |user| %>
           <tr>
-            <td><%= image_tag user.get_profile_image(100,100) %></td>
+            <td><%= image_tag user.get_profile_image(100,100), class: "user_profile" %></td>
             </div><td><%= link_to user.name, user_path(user.id) %></td>
             <td><%= user.area %></td>
             <td>

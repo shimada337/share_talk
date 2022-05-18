@@ -9,7 +9,7 @@
   <%= link_to '新規投稿する', new_post_path %>
   <% @search_posts.each do |post| %>
     <div class="row">
-      <%= image_tag post.user.get_profile_image(50,50), class: "mr-2" %>
+      <%= image_tag post.user.get_profile_image(50,50), class: "mr-2 user_profile" %>
       <%= link_to post.user.name, user_path(post.user.id) %>
     </div>
     <%= link_to post_path(post) do %>
