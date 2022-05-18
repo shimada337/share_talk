@@ -59,12 +59,12 @@
             </div>
           <% end %>
           <div class="row">
-            <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
             <%= post.body %>
           </div>
           <div class="row">
-            いいね <%= post.favorites.count %>
-            コメント <%= post.post_comments.count %>
+            <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+            いいね <strong><%= post.favorites.count %></strong>
+            コメント <strong><%= post.post_comments.count %></strong>
           </div>
         <% end %>
         <%= paginate @posts, param_name: 'my_posts' %>
@@ -95,7 +95,7 @@
         <% @favorite_posts.each do |favorite_post| %>
           <div class="row">
             <%= link_to user_path(favorite_post.user_id) do %>
-              <%= image_tag favorite_post.user.get_profile_image(50,50) %>
+              <%= image_tag favorite_post.user.get_profile_image(80,80) %>
               <%= favorite_post.user.name %>
             <% end %>
           </div>
@@ -105,12 +105,12 @@
             </div>
           <% end %>
           <div class="row">
-            <%= favorite_post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
             <%= favorite_post.body %>
           </div>
           <div class="row">
-            いいね <%= favorite_post.favorites.count %>
-            コメント <%= favorite_post.post_comments.count %>
+            <%= favorite_post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+            いいね<%= favorite_post.favorites.count %>
+            コメント<%= favorite_post.post_comments.count %>
           </div>
         <% end %>
         <%= paginate @favorite_posts, param_name: 'favorite_posts' %>
