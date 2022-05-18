@@ -5,6 +5,9 @@ $cWhite: white;
 $cBlack: black;
 $cGreen: #008000;
 $cOrange: #efa04c;
+$cLightBlue: lightblue;
+$cBlue: #0000ff;
+
 
 .btns {
   background-color: $cWhite;
@@ -50,6 +53,33 @@ $cOrange: #efa04c;
       }
     }
   }
+  
+  &.slide-bg {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    
+    & span {
+     display: inline-block;
+     width: 100%;
+     height: 100%;
+     background-color: $cBlue;
+     position: absolute;
+     top: 0;
+     left: 0;
+     transform: translateX(-100%);
+     transition: transform 0.3s;
+     z-index: -1;
+    }
+    
+    &:hover {
+      color: $cWhite;
+      
+      & span {
+          transform: none;
+      }
+    }
+  }
 }
 
 .flash {
@@ -58,7 +88,7 @@ $cOrange: #efa04c;
 }
 
 .notice {
-  background-color: lightblue;
+  background-color: $cLightBlue;
 }
 
 .alert {
@@ -101,7 +131,7 @@ table {
 }
 
 .introduction {
-  width: 60%;
+  width: 50%;
 }
 
 .my_chat {

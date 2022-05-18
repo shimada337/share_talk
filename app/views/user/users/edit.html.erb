@@ -22,7 +22,7 @@
         <%= f.select :position, User.positions.keys, {}, class:"form-control position" %>
       </div>
       <div class="form-group">
-        <%= f.submit '更新', class:"btn btn-secondary" %>
+        <%= f.submit '更新', class:"btn btn-success" %>
       </div>
       <% end %>
       
@@ -34,6 +34,7 @@
               <th class="introduction">紹介</th>
               <th>職業</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <% @house_members.each do |house_member| %>
@@ -42,8 +43,10 @@
               <td><%= house_member.introduction %></td>
               <td><%= house_member.position %></td>
               <td>
-                <%= link_to "編集", edit_user_house_member_path(current_user, house_member), class: "btn" %>
-                <%= link_to "削除", user_house_member_path(current_user, house_member), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？", class: "btn" %>
+                <%= link_to "編集", edit_user_house_member_path(current_user, house_member), class: "btn btn-secondary" %>
+              </td>
+              <td>
+                <%= link_to "削除", user_house_member_path(current_user, house_member), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？", class: "btn btn-danger" %>
               </td>
             </tr>
           <% end %>
@@ -57,6 +60,6 @@
         <%= f.text_area :introduction, class: "form-control" %>
         <%= f.label :position, "職業" %>
         <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control" %>
-        <%= f.submit '新規登録', class: "btn" %>
+        <%= f.submit '新規登録', class: "btn btn-success mt-3" %>
       <% end %>
 </div>

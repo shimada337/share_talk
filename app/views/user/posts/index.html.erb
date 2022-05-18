@@ -6,7 +6,11 @@
       <%= f.submit "検索", class: "btn btn-outline-success" %>
     <% end %>
   </div>
-  <%= link_to '新規投稿する', new_post_path %>
+  <div class="row">
+    <button class="btns slide-bg offset-md-8">
+      <span></span><%= link_to '新規投稿する', new_post_path, class: "btn text-reset" %>
+    </button>
+  </div>
   <% @search_posts.each do |post| %>
     <div class="mb-3">
     <div class="row">
