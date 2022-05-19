@@ -1,11 +1,10 @@
 <div class="container">
-  <h2>ユーザー詳細</h2>
   <% if @user.name != "guestuser" %>
   <% if current_user == @user %>
-    <%= link_to edit_user_path(@user), class: "btn btn-dark" do %>
+    <%= link_to edit_user_path(@user), class: "btn btn-dark mt-3 mr-3" do %>
       <i class="fa-solid fa-user-gear"></i>
     <% end %>
-    <%= link_to '新規投稿する', new_post_path, class: "btn btn-primary" %>
+    <%= link_to '新規投稿する', new_post_path, class: "btn btn-primary mt-3" %>
   <% end %>
   <% end %>
   <div class="row py-2">
