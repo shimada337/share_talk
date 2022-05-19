@@ -1,5 +1,6 @@
 class User::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_post,only: [:edit]
   before_action :search
   
   def search
@@ -57,5 +58,12 @@ class User::PostsController < ApplicationController
   
   def post_params
     params.require(:post).permit(:body, :image)
+  end
+  
+  def correct_post
+    @post = Post.find(params[:id])
+    unless @post.user.id == current_user.id
+      redirect_to posts_path, notice: 'あなたの投稿以外の編集画面へは遷移できません'
+    end
   end
 end

@@ -1,11 +1,11 @@
 <div class="container">
-  <h2>投稿一覧</h2>
   <div class="py-3">
     <%= search_form_for @search_post, class: "form-inline" do |f| %>
       <%= f.text_field :body_cont, class: "form-control mx-1 col-4", placeholder: "投稿を検索" %>
       <%= f.submit "検索", class: "btn btn-outline-success" %>
     <% end %>
   </div>
+  <h2>投稿一覧</h2>
   <div class="row">
     <button class="btns slide-bg offset-md-8">
       <span></span><%= link_to '新規投稿する', new_post_path, class: "btn text-reset" %>
