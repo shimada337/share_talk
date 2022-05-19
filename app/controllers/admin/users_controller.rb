@@ -1,6 +1,14 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :search
+  
+  def search
+    @search_user = User.ransack(params[:q])
+  end
+  
   def index
-    @users = User.all.page(params[:page]).per(20)
+    # @users = User.all.page(params[:page]).per(5)
+    @search_users = @search_user.result.page(params[:page]).per(20).order(created_at: :desc)
   end
 
   def show

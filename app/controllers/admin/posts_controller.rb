@@ -1,6 +1,14 @@
 class Admin::PostsController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :search
+  
+  def search
+    @search_post = Post.ransack(params[:q])
+  end
+  
   def index
-    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(20)
+    # @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
+    @search_posts = @search_post.result.page(params[:page]).per(20).order(created_at: :desc)
   end
 
   def show

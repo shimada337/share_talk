@@ -8,8 +8,8 @@ class User::UsersController < ApplicationController
   end
    
   def index
-    @users = User.all.order(created_at: :desc).page(params[:page]).per(10)
-    @search_users = @search_user.result.page(params[:page]).per(10).order(created_at: :desc)
+    # @users = User.all.order(created_at: :desc).page(params[:page]).per(20)
+    @search_users = @search_user.result.page(params[:page]).per(20).order(created_at: :desc)
   end
 
   def show
@@ -18,6 +18,7 @@ class User::UsersController < ApplicationController
     @posts = @user.posts.all.order(created_at: :desc).page(params[:my_posts]).per(20)
     #タブメニュー、@userのハウスメンバー
     @house_members = @user.house_members.all
+    #タブメニュー、@userのいいね一覧
     @favorite_posts = Post.joins(:favorites).where(favorites: {user_id: @user.id}).order(created_at: :desc).page(params[:favorite_posts]).per(30)
   end
 

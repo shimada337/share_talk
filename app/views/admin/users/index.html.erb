@@ -1,4 +1,10 @@
 <div class="container">
+  <div class="py-3">
+    <%= search_form_for @search_user, url: '/admin/users', class: "form-inline" do |f| %>
+      <%= f.text_field :name_cont, class: "form-control mx-1 col-4", placeholder: "ユーザーを検索" %>
+      <%= f.submit "検索", class: "btn btn-outline-primary" %>
+    <% end %>
+  </div>
   <h2>ユーザー一覧</h2>
   <table class="table table-border table-hover">
     <thead>
@@ -9,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @users.each do |user| %>
+      <% @search_users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
         <td>
@@ -24,5 +30,5 @@
       <% end %>
     </tbody>
   </table>
-  <%= paginate @users %>
+  <%= paginate @search_users %>
 </div>
