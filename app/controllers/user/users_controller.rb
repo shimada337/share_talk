@@ -1,8 +1,7 @@
 class User::UsersController < ApplicationController
-   before_action :authenticate_user!
-  before_action :ensure_guest_user, only: [:edit]
-  # before_action :currect_user, only: [:edit]
-   before_action :search
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit]
+  before_action :search
 
   def search
     @search_user = User.ransack(params[:q])
@@ -48,19 +47,12 @@ class User::UsersController < ApplicationController
     params.require(:user).permit(:name, :self_introduction, :profile_image, :area, :position)
   end
   
-  def ensure_guest_user
+  def correct_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"
-      redirect_to user_path(current_user), notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to user_path(current_user), notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません'
+    elsif @user != current_user
+      redirect_to user_path(current_user), notice: 'あなた以外のユーザーの編集画面へは遷移できません'
     end
   end
-  
-  # def currect_user
-  #   @user = User.find(params[:id])
-  #   unless @user == current_user
-  #     redirect_to user_path(currect_user), notice: 'あなた以外のユーザーの編集画面へは遷移できません'
-    # else @user.name == 'guestuser'
-    #   redirect_to user_path(currect_user), notice: 'ゲストユーザーは編集画面へ遷移できません'
-    # end
-  # end
 end

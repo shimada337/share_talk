@@ -1,8 +1,8 @@
-<div classs="container">
-  <h2 class="text-center my-3">通知</h2>
+<div class="container">
+  <h2 class="my-3">通知</h2>
   <% if @notifications.exists? %>
     <%= render partial: "notification", collection: @notifications %>
-    <div class="offset-md-2"><%= paginate @notifications %></div>
+    <%= paginate @notifications %>
   <% else %>
     <p>通知はありません</p>
   <% end %>

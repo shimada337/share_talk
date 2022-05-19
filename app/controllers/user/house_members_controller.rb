@@ -1,6 +1,5 @@
 class User::HouseMembersController < ApplicationController
-  def new
-  end
+  before_action :authenticate_user!
 
   def edit
     @user = current_user
