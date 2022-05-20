@@ -8,6 +8,7 @@ $cOrange: #efa04c;
 $cLightBlue: lightblue;
 $cBlue: #0000ff;
 $cYellow: #ff6;
+$Llime: #00ff00;
 
 
 .btns {
@@ -60,7 +61,7 @@ $cYellow: #ff6;
     overflow: hidden;
     z-index: 1;
     
-    & span {
+    & .bg-blue {
      display: inline-block;
      width: 100%;
      height: 100%;
@@ -71,6 +72,11 @@ $cYellow: #ff6;
      transform: translateX(-100%);
      transition: transform 0.3s;
      z-index: -1;
+    }
+    
+    & .bg-lime {
+      @extend .bg-blue;
+      background-color: $Llime;
     }
     
     &:hover {
