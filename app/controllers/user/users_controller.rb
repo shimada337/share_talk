@@ -48,6 +48,7 @@ class User::UsersController < ApplicationController
     params.require(:user).permit(:name, :self_introduction, :profile_image, :area, :position)
   end
   
+  #url直打ち対策
   def correct_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"

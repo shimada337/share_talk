@@ -60,6 +60,7 @@ class User::PostsController < ApplicationController
     params.require(:post).permit(:body, :image)
   end
   
+  #url直打ち対策
   def correct_post
     @post = Post.find(params[:id])
     unless @post.user.id == current_user.id

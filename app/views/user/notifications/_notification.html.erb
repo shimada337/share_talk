@@ -24,10 +24,6 @@
             <%= link_to "投稿", post_path(notification.post) %>
           <% end %>
           にコメントしました
-          <!----内容表示したい-->
-          <!--<%# if !@post_comment.nil? %>-->
-          <!--  <p class="moderate-font"><%#= @post_comment %></p>-->
-          <!--<%# end %>-->
       <% end %>
       <%= time_ago_in_words(notification.created_at) + '前' %>
     </div>

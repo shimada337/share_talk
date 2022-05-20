@@ -17,7 +17,7 @@ class User < ApplicationRecord
   #フォローした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  #一覧画面で使う
+  #フォロー、フォロワーの一覧画面
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_one_attached :profile_image
@@ -36,6 +36,7 @@ class User < ApplicationRecord
     followings.include?(user)
   end
   
+  #フォローの通知
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
     if temp.blank?

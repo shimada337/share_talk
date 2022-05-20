@@ -6,6 +6,7 @@ class User::ChatsController < ApplicationController
     rooms = current_user.user_rooms.pluck(:room_id)
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
     
+    #チャットルームがなかったら新しく作る
     if user_rooms.nil?
       @room = Room.new
       @room.save
