@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     
     get 'chat/:id', to: 'chats#show', as: 'chat'
     resources :chats, only: [:create]
+    resources :rooms, only: [:index]
   end
   
   devise_scope :user do

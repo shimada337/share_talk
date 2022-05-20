@@ -1,0 +1,8 @@
+<div class="container">
+  <h2>dm一覧</h2>
+  <div class="row">
+    <% @another_user_rooms.each do |room| %>
+      <%= room.user.name %>
+    <% end %>
+  </div>
+</div>

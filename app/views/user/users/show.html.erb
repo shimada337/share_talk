@@ -4,6 +4,7 @@
     <%= link_to edit_user_path(@user), class: "btn btn-dark mt-3 mr-3" do %>
       <i class="fa-solid fa-user-gear"></i>
     <% end %>
+    <%= link_to 'dm', rooms_path %>
     <%= link_to '新規投稿する', new_post_path, class: "btn btn-primary mt-3" %>
   <% end %>
   <% end %>
