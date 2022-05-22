@@ -23,8 +23,8 @@
       </div>
     <% end %>
     <div class="row">
-      <%= post.body %>
-    </div>
+      <%= safe_join(post.body.split("\n"),tag(:br)) %>
+    </div> 
     <div class="row">
       <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
       <div class="favorite_buttons_<%= post.id %> mx-1">

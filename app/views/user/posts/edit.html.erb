@@ -2,13 +2,17 @@
   <h2>投稿編集</h2>
   <%= form_with model: @post do |f| %>
     <div class="row">
-    <%= f.file_field :image, accept: "image/*" %>
-  </div>
-  <div class="row">
-    <%= f.text_area :body, class: "form-control my-3" %>
-  </div>
-  <div class="row">
-    <%= f.submit '更新', class: "btn btn-success" %>
-  </div>
+      <%= f.label :image, "画像" %>
+    </div>
+    <div class="row">
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+    <div class="row my-3">
+      <%= f.label :body, "本文" %>
+      <%= f.text_area :body, class: "form-control", rows: 10, placeholder: '投稿内容を入力してください' %>
+    </div>
+    <div class="row">
+      <%= f.submit '更新', class: "btn btn-success" %>
+    </div>
   <% end %>
 </div>

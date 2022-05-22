@@ -8,7 +8,7 @@
     <%=image_tag @post.get_image(500,500) %>
   </div>
   <div class="row">
-    <%= @post.body %>
+    <%= safe_join(@post.body.split("\n"),tag(:br)) %>
   </div>
   <div class="row">
     <%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
@@ -36,10 +36,10 @@
       <tbody>
         <% @post_comments.each do |comment| %>
           <tr>
-            <td><%= comment.user.name %></td>
+            <td><%= link_to comment.user.name, user_path(comment.user) %></td>
             <td><%= comment.comment %></td>
             <% if comment.user == current_user %>
-              <td><%= link_to "削除", post_post_comment_path(@post, comment), method: :delete, "data-confirm" => "コメントを本当に削除しますか？" %></td>
+              <td><%= link_to "削除", post_post_comment_path(@post, comment), method: :delete, "data-confirm" => "コメントを本当に削除しますか？", class: "btn btn-danger" %></td>
             <% end %>
           </tr>
         <% end %>
@@ -49,7 +49,7 @@
   <%= form_with model: [@post, @post_comment] do |f| %>
     <div class="form-inline my-3">
       <%= f.text_area :comment, placeholder: "コメントを入力して下さい", class: "form-control col-6" %>
-      <%= f.submit "送信", class: "btn ml-1" %>
+      <%= f.submit "送信", class: "btn btn-primary ml-1" %>
     </div>
   <% end %>
 </div>

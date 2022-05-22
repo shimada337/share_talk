@@ -50,7 +50,7 @@ class User::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      redirect_to posts_path, notice: '投稿を削除しました'
+      redirect_to user_path(current_user), notice: '投稿を削除しました'
     end
   end
   
