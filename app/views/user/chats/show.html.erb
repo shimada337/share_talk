@@ -15,7 +15,7 @@
                 <tbody>
                   <tr>
                     <td>
-                      <p class="my_chat"><%= chat.message %></p>
+                      <p class="my_chat"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
                       <p class="my_chat"><%= chat.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
                     </td>
                     <td></td>
@@ -24,7 +24,7 @@
                   <tr>
                     <td></td>
                     <td>
-                      <p class="you_chat"><%= chat.message %></p>
+                      <p class="you_chat"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
                       <p class="you_chat"><%= chat.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
                     </td>
                   </tr>
@@ -35,7 +35,7 @@
             
             <%= form_with model: @chat do |f| %>
               <div class="form-inline my-3">
-                <%= f.text_area :message, placeholder: "メッセージを入力して下さい", class: "form-control col-5" %>
+                <%= f.text_area :message, placeholder: "メッセージを入力して下さい", class: "form-control col-5", rows: 3 %>
                 <%= f.hidden_field :room_id %>
                 <%= f.submit "送信", class:"btn btn-success chat-btn ml-1" %>
               </div>
