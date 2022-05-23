@@ -13,7 +13,7 @@
     </div>
     <div class="col-8 border">
     <%= @user.name %><br>
-    <%= @user.self_introduction %><br>
+    <%= safe_join(@user.self_introduction.split("\n"),tag(:br)) %><br>
      <% if @user.name != "guestuser" %>
         <span>職業： </span><%= @user.position %><br>
         <span>シェアハウスしている都道府県： </span><%= @user.area %>

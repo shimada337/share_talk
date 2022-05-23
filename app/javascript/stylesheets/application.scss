@@ -141,6 +141,13 @@ body {
   border-radius: 50%;
 }
 
+.custom-file {
+  overflow: hidden;
+}
+.custom-file-label {
+  white-space: nowrap;
+}
+
 .footer_fixed {
 min-height: 100vh;
 position: relative;

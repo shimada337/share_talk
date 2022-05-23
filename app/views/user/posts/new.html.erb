@@ -1,11 +1,11 @@
 <div class="container">
   <h2>新規投稿</h2>
   <%= form_with model: @post, url: '/posts', method: :post do |f| %>
-    <div class="row">
-      <%= f.label :image, "画像" %>
-    </div>
-    <div class="row">
-      <%= f.file_field :image, accept: "image/*" %>
+    <div class="row custom-file">
+      <%= f.label :image, "ファイル選択…", class: "custom-file-label" %>
+    <!--</div>-->
+    <!--<div class="row">-->
+      <%= f.file_field :image, accept: "image/*", class: "custom-file-input", id: "customFile" %>
     </div>
     <div class="row my-3">
       <%= f.label :body, "本文" %>
