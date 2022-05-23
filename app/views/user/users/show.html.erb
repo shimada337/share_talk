@@ -13,7 +13,11 @@
     </div>
     <div class="col-8 border">
     <%= @user.name %><br>
-    <%= safe_join(@user.self_introduction.split("\n"),tag(:br)) %><br>
+    <% if @user.self_introduction.nil? %>
+      <%= @user.self_introduction %><br>
+    <% else %>
+      <%= safe_join(@user.self_introduction.split("\n"),tag(:br)) %><br>
+    <% end %>
      <% if @user.name != "guestuser" %>
         <span>職業： </span><%= @user.position %><br>
         <span>シェアハウスしている都道府県： </span><%= @user.area %>
@@ -86,7 +90,7 @@
             <% @house_members.each do |house_member| %>
               <tr>
                 <td><%= house_member.name %></td>
-                <td><%= house_member.introduction %></td>
+                <td><%= safe_join(house_member.introduction.split("\n"),tag(:br)) %></td>
                 <td><%= house_member.position %></td>
               </tr>
             <% end %>
