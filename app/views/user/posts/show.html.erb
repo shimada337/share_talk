@@ -7,12 +7,12 @@
   <div class="row">
     <%=image_tag @post.get_image(500,500) %>
   </div>
-  <div class="row">
+  <div class="row my-3">
     <%= safe_join(@post.body.split("\n"),tag(:br)) %>
   </div>
   <div class="row">
     <%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-    <div class="favorite_buttons_<%= @post.id %>">
+    <div class="favorite_buttons_<%= @post.id %> mx-2">
       <%= render "user/favorites/favorite", post: @post %>
     </div>
     コメント<%= @post.post_comments.count %>
@@ -25,7 +25,7 @@
       <% end %>
     <% end %>
     
-    <table class="table table-hover">
+    <table class="table table-hover mt-3">
       <thead>
         <tr>
           <th>コメント投稿者</th>
@@ -37,7 +37,7 @@
         <% @post_comments.each do |comment| %>
           <tr>
             <td><%= link_to comment.user.name, user_path(comment.user) %></td>
-            <td><%= comment.comment %></td>
+            <td><%= safe_join(comment.comment.split("\n"),tag(:br)) %></td>
             <% if comment.user == current_user %>
               <td><%= link_to "削除", post_post_comment_path(@post, comment), method: :delete, "data-confirm" => "コメントを本当に削除しますか？", class: "btn btn-danger" %></td>
             <% end %>

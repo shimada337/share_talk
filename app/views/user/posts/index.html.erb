@@ -22,7 +22,7 @@
         <%= image_tag post.get_image(500,500), class: "mx-auto" %>
       </div>
     <% end %>
-    <div class="row">
+    <div class="row my-3">
       <%= safe_join(post.body.split("\n"),tag(:br)) %>
     </div> 
     <div class="row">

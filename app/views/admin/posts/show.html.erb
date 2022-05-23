@@ -7,15 +7,15 @@
   <div class="row">
     <%=image_tag @post.get_image(500,500) %>
   </div>
-  <div class="row">
+  <div class="row my-3">
     <%= @post.body %>
   </div>
   <div class="row">
     <%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
     コメント<%= @post.post_comments.count %>
-    <%= link_to "投稿を削除", admin_post_path(@post), method: :delete, "data-confirm" => "投稿を本当に削除しますか？", class: "btn btn-danger ml-1 mb-3" %>
+    <%= link_to "投稿を削除", admin_post_path(@post), method: :delete, "data-confirm" => "投稿を本当に削除しますか？", class: "btn btn-danger ml-3" %>
     
-    <table class="table table-hover">
+    <table class="table table-hover mt-3">
       <thead>
         <tr>
           <th>コメント投稿者</th>
@@ -27,7 +27,7 @@
         <% @post_comments.each do |post_comment| %>
           <tr>
             <td><%= post_comment.user.name %></td>
-            <td><%= post_comment.comment %></td>
+            <td><%= safe_join(post_comment.comment.split("\n"),tag(:br)) %></td>
             <td><%= link_to "削除", admin_post_comment_path(post_comment), method: :delete, "data-confirm" => "コメントを本当に削除しますか？", class: "btn btn-danger" %></td>
           </tr>
         <% end %>
