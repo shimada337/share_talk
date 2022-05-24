@@ -43,3 +43,7 @@ ja:
       previous: '前'
       next: '次'
       truncate: '...'
+      
+  attributes:
+    user:
+      name: "ユーザーネーム"
