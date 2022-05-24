@@ -1,9 +1,11 @@
 <div class="container">
   <h2>新規投稿</h2>
   <%= form_with model: @post, url: '/posts', method: :post do |f| %>
-    <div class="row custom-file">
-      <%= f.label :image, "ファイル選択…", class: "custom-file-label" %>
-      <%= f.file_field :image, accept: "image/*", class: "custom-file-input", id: "customFile" %>
+    <div class="row">
+      <%= f.label :image, "投稿画像" %>
+    </div>
+    <div class="row">
+      <%= f.file_field :image, accept: "image/*" %>
     </div>
     <div class="row my-3">
       <%= f.label :body, "本文" %>
@@ -14,9 +16,3 @@
     </div>
   <% end %>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
-<script>
-  $(document).ready(function () {
-    bsCustomFileInput.init()
-  })
-</script>
