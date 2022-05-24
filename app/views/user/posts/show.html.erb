@@ -7,7 +7,7 @@
   <div class="row">
     <%=image_tag @post.get_image(500,500) %>
   </div>
-  <div class="row my-3">
+  <div class="row my-3 border border-secondary rounded-sm p-2">
     <%= safe_join(@post.body.split("\n"),tag(:br)) %>
   </div>
   <div class="row">
@@ -40,7 +40,7 @@
               <%= link_to comment.user.name, user_path(comment.user) %>
             </td>
             <td>
-              <%= safe_join(comment.comment.split("\n"),tag(:br)) %>
+              <p><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
               <p><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
             </td>
             <% if comment.user == current_user %>

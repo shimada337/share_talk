@@ -1,10 +1,8 @@
 <div class="container">
   <h2>投稿編集</h2>
+  <p>投稿画像</p>
+  <%= image_tag @post.get_image(300,300) %>
   <%= form_with model: @post do |f| %>
-      <div class="row custom-file">
-      <%= f.label :image, "ファイル選択…", class: "custom-file-label" %>
-      <%= f.file_field :image, accept: "image/*", class: "custom-file-input", id: "customFile" %>
-    </div>
     <div class="row my-3">
       <%= f.label :body, "本文" %>
       <%= f.text_area :body, class: "form-control", rows: 10, placeholder: '投稿内容を入力してください' %>
@@ -14,10 +12,3 @@
     </div>
   <% end %>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
-<script>
-  $(document).ready(function () {
-    bsCustomFileInput.init()
-  })
-</script>
