@@ -4,7 +4,7 @@
   </h2>
   <div>
     <div class="row my-3">
-      <div class="col-3">会員ID</div>
+      <div class="col-3">ユーザーID</div>
       <div class="col-7"><%= @user.id %></div>
     </div>
     <div class="row my-3">
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="row mb-3">
-      <div class="col-3">会員ステータス</div>
+      <div class="col-3">ユーザーステータス</div>
       <% if @user.is_deleted == false %>
         <div class="col-7 text-success">有効</div>
       <% else %>

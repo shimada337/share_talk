@@ -1,7 +1,7 @@
 <div class="container">
   <h2>投稿編集</h2>
   <p>投稿画像</p>
-  <%= image_tag @post.get_image(300,300) %>
+  <%= image_tag @post.get_image(300,300), class: "rounded" %>
   <%= form_with model: @post do |f| %>
     <div class="row my-3">
       <%= f.label :body, "本文" %>

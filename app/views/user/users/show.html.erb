@@ -62,7 +62,7 @@
         <% @posts.each do |post| %>
           <%= link_to post_path(post) do %>
             <div class="row posts">
-              <%= image_tag post.get_image(300,300), class: "mx-auto" %>
+              <%= image_tag post.get_image(300,300), class: "mx-auto rounded" %>
             </div>
           <% end %>
           <div class="row border border-secondary rounded-sm p-2 my-2">
@@ -101,14 +101,12 @@
       <div id="favorites" class="tab">
         <% @favorite_posts.each do |favorite_post| %>
           <div class="row">
-            <%= link_to user_path(favorite_post.user_id) do %>
-              <%= image_tag favorite_post.user.get_profile_image(80,80), class: "user_profile" %>
-              <%= favorite_post.user.name %>
-            <% end %>
+            <%= image_tag favorite_post.user.get_profile_image(80,80), class: "user_profile" %>
+            <%= link_to favorite_post.user.name, user_path(favorite_post.user) %>
           </div>
           <%= link_to post_path(favorite_post) do %>
             <div class="row posts">
-              <%= image_tag favorite_post.get_image(300,300), class: "mx-auto" %>
+              <%= image_tag favorite_post.get_image(300,300), class: "mx-auto rounded" %>
             </div>
           <% end %>
           <div class="row border border-secondary rounded-sm p-2 my-2">

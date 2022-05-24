@@ -2,7 +2,7 @@
   <h2><%= @user.name %>さんのユーザー情報編集</h2>
   <%= form_with model: [:admin, @user] do |f| %>
     <div class="field row">
-      <div class="col-2"><%= f.label :user_id, "会員ID" %></div>
+      <div class="col-2"><%= f.label :user_id, "ユーザーID" %></div>
       <div class="col-6"><%= @user.id %></div>
     </div>
     <div class="field row">
@@ -22,7 +22,7 @@
       <div class="col-6"><%= f.text_area :self_introduction, class: "form-control mb-2", rows: 5 %></div>
     </div>
     <div class="field row">
-      <div class="col-2"><%= f.label :is_deleted, "会員ステータス" %></div>
+      <div class="col-2"><%= f.label :is_deleted, "ユーザーステータス" %></div>
       <div class="col-6">
         <%= f.radio_button :is_deleted, false %>
         <%= f.label :is_deleted, "有効", value: false %>

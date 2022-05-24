@@ -5,7 +5,7 @@
     <%= link_to @post.user.name, admin_user_path(@post.user.id) %>
   </div>
   <div class="row">
-    <%=image_tag @post.get_image(500,500) %>
+    <%=image_tag @post.get_image(500,500), class: "rounded" %>
   </div>
   <div class="row my-3 border border-secondary rounded-sm p-2">
     <%= safe_join(@post.body.split("\n"),tag(:br)) %>
