@@ -44,6 +44,8 @@ ja:
       next: '次'
       truncate: '...'
       
-  attributes:
-    user:
-      name: "ユーザーネーム"
+  activerecord:
+    attributes:
+      user:
+       name: "ユーザーネーム"
+       email: "メールアドレス"
