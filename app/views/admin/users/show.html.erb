@@ -1,6 +1,6 @@
 <div class="container">
   <h2>
-    <%= @user.name %>さんの会員情報
+    <%= @user.name %>の会員情報
   </h2>
   <div>
     <div class="row my-3">
@@ -39,6 +39,32 @@
     </div>
     <div class="row">
       <%= link_to "編集する", edit_admin_user_path(@user), class: "btn btn-primary offset-md-3 my-5" %>
+    </div>
+  </div>
+  
+  <div class="mt-5">
+    <div class="row">
+      <h2>ハウスメンバー一覧</h2>
+    </div>
+    <div class="row">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>メンバーネーム</th>
+            <th class="introduction">紹介</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @house_members.each do |house_member| %>
+            <tr>
+              <td><%= house_member.name %></td>
+              <td><%= safe_join(house_member.introduction.split("\n"),tag(:br)) %></td>
+              <td><%= link_to "削除", admin_house_member_path(house_member), method: :delete, "data-confirm" => "ハウスメンバーを本当に削除しますか？", class: "btn btn-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
