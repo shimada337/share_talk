@@ -101,7 +101,7 @@
       <div id="favorites" class="tab">
         <% @favorite_posts.each do |favorite_post| %>
           <div class="row">
-            <%= image_tag favorite_post.user.get_profile_image(80,80), class: "user_profile" %>
+            <%= image_tag favorite_post.user.get_profile_image(80,80), class: "user_profile mr-1" %>
             <%= link_to favorite_post.user.name, user_path(favorite_post.user) %>
           </div>
           <%= link_to post_path(favorite_post) do %>

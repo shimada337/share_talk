@@ -5,7 +5,7 @@
     <div class="row">
       <% unless current_user == visitor %>
         <%= link_to user_path(visitor) do %>
-          <%= image_tag visitor.get_profile_image(80,80), class: "user_profile" %>
+          <%= image_tag visitor.get_profile_image(80,80), class: "user_profile mr-1" %>
         <% end %>
         <%= link_to visitor.name, user_path(visitor) %>が
       <% end %>
@@ -19,7 +19,7 @@
           <% if notification.post.user_id == visited.id %>
             <%= link_to "あなたの投稿", notification.post %>
           <% else %>
-            <%= image_tag notification.post.user.get_profile_image(80,80), class: "user_profile" %>
+            <%= image_tag notification.post.user.get_profile_image(80,80), class: "user_profile mr-1" %>
             <%= notification.post.user.name %>の
             <%= link_to "投稿", post_path(notification.post) %>
           <% end %>

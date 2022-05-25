@@ -2,11 +2,11 @@
   <h2>ハウスメンバー編集</h2>
   <%= form_with model: [@user, @house_member], method: :patch do |f| %>
     <%= f.label :name, "ハウスメンバーネーム" %>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.text_field :name, class: "form-control mb-2" %>
     <%= f.label :introduction, "紹介" %>
-    <%= f.text_area :introduction, class: "form-control" %>
+    <%= f.text_area :introduction, class: "form-control mb-2", rows: 5 %>
     <%= f.label :position, "職業" %>
-    <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control" %>
-    <%= f.submit "変更", class: "btn" %>
+    <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control mb-2" %>
+    <%= f.submit "変更", class: "btn btn-success" %>
   <% end %>
 </div>

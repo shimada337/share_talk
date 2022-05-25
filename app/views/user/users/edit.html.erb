@@ -55,11 +55,11 @@
     <h2>ハウスメンバー新規登録</h2>
     <%= form_with model: @house_member, url: '/users/@user/house_members', method: :post do |f| %>
       <%= f.label :name, "ハウスメンバーネーム" %>
-      <%= f.text_field :name, class: "form-control", placeholder: "ニックネーム" %>
+      <%= f.text_field :name, class: "form-control mb-2", placeholder: "ニックネーム" %>
       <%= f.label :introduction, "紹介" %>
-      <%= f.text_area :introduction, class: "form-control", rows: 5, placeholder: "どんな人ですか？" %>
+      <%= f.text_area :introduction, class: "form-control mb-2", rows: 5, placeholder: "どんな人ですか？" %>
       <%= f.label :position, "職業" %>
-      <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control" %>
-      <%= f.submit '新規登録', class: "btn btn-success mt-3" %>
+      <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control mb-2" %>
+      <%= f.submit '新規登録', class: "btn btn-success" %>
     <% end %>
   </div>
