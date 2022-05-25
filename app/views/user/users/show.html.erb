@@ -1,11 +1,11 @@
 <div class="container">
   <% if @user.name != "guestuser" %>
-  <% if current_user == @user %>
-    <%= link_to edit_user_path(@user), class: "btn btn-dark mt-3 mr-3" do %>
-      <i class="fa-solid fa-user-gear"></i>
+    <% if current_user == @user %>
+      <%= link_to edit_user_path(@user), class: "btn btn-dark mt-3 mr-3" do %>
+        <i class="fa-solid fa-user-gear"></i>
+      <% end %>
+      <%= link_to '新規投稿する', new_post_path, class: "btn btn-primary mt-3" %>
     <% end %>
-    <%= link_to '新規投稿する', new_post_path, class: "btn btn-primary mt-3" %>
-  <% end %>
   <% end %>
   <div class="row py-2">
     <div class="col-2 text-center">
@@ -18,18 +18,18 @@
     <% else %>
       <%= safe_join(@user.self_introduction.split("\n"),tag(:br)) %><br>
     <% end %>
-     <% if @user.name != "guestuser" %>
-        <span>職業： </span><%= @user.position %><br>
-        <span>シェアハウスしている都道府県： </span><%= @user.area %>
-     <% end %>
-    </div>
+    <% if @user.name != "guestuser" %>
+      <span>職業： </span><%= @user.position %><br>
+      <span>シェアハウスしている都道府県： </span><%= @user.area %>
+    <% end %>
+  </div>
   </div>
   <% unless current_user == @user %>
     <% if (current_user.following? @user) && (@user.following? current_user) %>
       <button class="btns slide-bg">
-      <span class="bg-lime"></span><%= link_to chat_path(@user.id), class: "btn text-reset" do %>
-        <i class="fa-solid fa-envelope"></i> メッセージを送る
-      <% end %>
+        <span class="bg-lime"></span><%= link_to chat_path(@user.id), class: "btn text-reset" do %>
+          <i class="fa-solid fa-envelope"></i> メッセージを送る
+        <% end %>
       </button>
     <% end %>
   <% end %>
