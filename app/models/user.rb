@@ -23,6 +23,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   validates :name, presence:true, length: { maximum: 30 }
   validates :self_introduction, length: { maximum: 250 }
+  validate :profile_image_type, if: :was_attached?
   
   def follow(user_id)
     relationships.create(followed_id: user_id)
@@ -54,6 +55,15 @@ class User < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  def profile_image_type
+    extension = ['image/png', 'image/jpg', 'image/jpeg']
+    errors.add(:profile_image, "の拡張子が間違っています") unless profile_image.content_type.in?(extension)
+  end
+  
+  def was_attached?
+    self.profile_image.attached?
   end
   
   def self.guest
