@@ -43,16 +43,13 @@ ja:
       previous: '前'
       next: '次'
       truncate: '...'
-      
-  activerecord:
-    attributes:
-      user:
-       name: "ユーザーネーム"
-       email: "メールアドレス"
-       profile_image: "プロフィール画像"
        
   activerecord:
     attributes:
       post:
        body: "本文"
        image: "画像"
+      user:
+       name: "ユーザーネーム"
+       email: "メールアドレス"
+       profile_image: "プロフィール画像"

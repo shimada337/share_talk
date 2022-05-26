@@ -6,13 +6,12 @@ class User::PostCommentsController < ApplicationController
     @comment = current_user.post_comments.new(post_comment_params)
     @comment.post_id = post.id
     if @comment.save
+      post.create_notification_comment!(current_user, @comment.id)
       redirect_to request.referer, notice: 'コメントを送信しました'
     else
       flash[:alert] = 'コメントの送信に失敗しました'
       redirect_to request.referer
     end
-    post.create_notification_comment!(current_user, @comment.id)
-    post.save_notification_comment!(current_user, @comment.id, post.user_id)
   end
 
   def destroy

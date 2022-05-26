@@ -46,9 +46,13 @@ class Post < ApplicationRecord
   
   def create_notification_comment!(current_user, post_comment_id)
     #コメントをしているユーザー全員に通知を送る
-    temp_ids = PostComment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
+    # temp_ids = PostComment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
+    temp_ids = PostComment.where(post_id: id).where.not(user_id: current_user.id).distinct.pluck(:user_id)
+    temp_ids << user_id
+    temp_ids = temp_ids.uniq
+    binding.pry
     temp_ids.each do |temp_id|
-      save_notification_comment!(current_user, post_comment_id, temp_id['user_id'])
+      save_notification_comment!(current_user, post_comment_id, temp_id)
     end
     #誰もコメントしていない場合に投稿者にのみ通知
      save_notification_comment!(current_user, post_comment_id, user_id) if temp_ids.blank?
