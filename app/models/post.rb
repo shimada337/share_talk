@@ -50,7 +50,6 @@ class Post < ApplicationRecord
     temp_ids = PostComment.where(post_id: id).where.not(user_id: current_user.id).distinct.pluck(:user_id)
     temp_ids << user_id
     temp_ids = temp_ids.uniq
-    binding.pry
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, post_comment_id, temp_id)
     end
