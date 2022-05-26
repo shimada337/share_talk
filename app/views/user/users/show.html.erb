@@ -12,17 +12,17 @@
       <%= image_tag @user.get_profile_image(100,100), class: "user_profile" %>
     </div>
     <div class="col-8 border border-dark rounded-lg p-2">
-    <%= @user.name %><br>
-    <% if @user.self_introduction.nil? %>
-      <%= @user.self_introduction %><br>
-    <% else %>
-      <%= safe_join(@user.self_introduction.split("\n"),tag(:br)) %><br>
-    <% end %>
-    <% if @user.name != "guestuser" %>
-      <span>職業： </span><%= @user.position %><br>
-      <span>シェアハウスしている都道府県： </span><%= @user.area %>
-    <% end %>
-  </div>
+      <%= @user.name %><br>
+      <% if @user.self_introduction.nil? %>
+        <%= @user.self_introduction %><br>
+      <% else %>
+        <%= safe_join(@user.self_introduction.split("\n"),tag(:br)) %><br>
+      <% end %>
+      <% if @user.name != "guestuser" %>
+        <span>職業： </span><%= @user.position %><br>
+        <span>シェアハウスしている都道府県： </span><%= @user.area %>
+      <% end %>
+    </div>
   </div>
   <% unless current_user == @user %>
     <% if (current_user.following? @user) && (@user.following? current_user) %>
