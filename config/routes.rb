@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :user do
-    get 'chats/show'
-  end
   root to: 'homes#top'
   
   devise_for :users, skip: [:passwords], controllers: {
