@@ -23,6 +23,10 @@
 - 他のシェアハウスをしている人たちの投稿を閲覧したい時
 
 ## 設計書
+- [**テーブル定義書**](https://docs.google.com/spreadsheets/d/1V9HXOliWJz9fA_3khfXumAx4KUzB731SUdiYZGjBy9k/edit#gid=496126025)
+- [**ER図（画面遷移図）**](https://app.diagrams.net/#G1ns1spdnQLsgCLQJW2yaWqxzzx3SIaxyE)
+- [**アプリケーション詳細設計書**](https://docs.google.com/spreadsheets/d/1wN8SCCYZsfakOJ4vz7OWjoRTpx9cRCcYsH5aILmmqxc/edit#gid=2133469642)
+- [**テスト仕様書**](https://docs.google.com/spreadsheets/d/1s3KRGbNpnwMpLHDJh_Tg5lzKt2pOc4J7/edit#gid=1511467858)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -33,4 +37,3 @@
 
 ## 使用素材
 - Pixtabay（画像）
-- OpenWeatherMap API(検討中)
