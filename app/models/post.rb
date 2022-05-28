@@ -29,9 +29,9 @@ class Post < ApplicationRecord
   #いいね通知
   def create_notification_favorite!(current_user)
     #いいねされているか調べている
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
+    favorite_exist = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
     #いいねされていない場合の処理
-    if temp.blank?
+    if favorite_exist.blank?
       notification = current_user.active_notifications.new(
         post_id: id,
         visited_id: user_id,
@@ -48,14 +48,14 @@ class Post < ApplicationRecord
   #コメント通知
   def create_notification_comment!(current_user, post_comment_id)
     #コメントをしているユーザー全員に通知を送る
-    temp_ids = PostComment.where(post_id: id).where.not(user_id: current_user.id).distinct.pluck(:user_id)
-    temp_ids << user_id
-    temp_ids = temp_ids.uniq
-    temp_ids.each do |temp_id|
-      save_notification_comment!(current_user, post_comment_id, temp_id)
+    comment_users = PostComment.where(post_id: id).where.not(user_id: current_user.id).distinct.pluck(:user_id)
+    comment_users << user_id
+    comment_users = comment_users.uniq
+    comment_users.each do |comment_user|
+      save_notification_comment!(current_user, post_comment_id, comment_user)
     end
     #誰もコメントしていない場合に投稿者にのみ通知
-     save_notification_comment!(current_user, post_comment_id, user_id) if temp_ids.blank?
+     save_notification_comment!(current_user, post_comment_id, user_id) if comment_users.blank?
   end
   
   #コメントを送るたびに通知
