@@ -10,9 +10,9 @@ class User::HouseMembersController < ApplicationController
     @house_member = HouseMember.new(house_member_params)
     @house_member.user_id = current_user.id
     if @house_member.save
-      redirect_to request.referer, notice: 'ハウスメンバーを登録しました'
+      redirect_to request.referer, notice: 'シェアハウスメンバーを登録しました'
     else
-      flash[:alert] = 'ハウスメンバーの登録に失敗しました'
+      flash[:alert] = 'シェアハウスメンバーの登録に失敗しました'
       redirect_to  request.referer
     end
   end
@@ -20,16 +20,16 @@ class User::HouseMembersController < ApplicationController
   def destroy
     @house_member = HouseMember.find(params[:id])
     if @house_member.destroy
-      redirect_to request.referer, notice: 'ハウスメンバーを削除しました'
+      redirect_to request.referer, notice: 'シェアハウスメンバーを削除しました'
     end
   end
   
   def update
     @house_member = HouseMember.find(params[:id])
     if @house_member.update(house_member_params)
-      redirect_to edit_user_path(current_user), notice: 'ハウスメンバーの情報を更新しました'
+      redirect_to edit_user_path(current_user), notice: 'シェアハウスメンバーの情報を更新しました'
     else
-      flash[:alert] = 'ハウスメンバーの情報更新に失敗しました'
+      flash[:alert] = 'シェアハウスメンバーの情報更新に失敗しました'
       redirect_to  request.referer
     end
   end

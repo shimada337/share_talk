@@ -6,9 +6,6 @@ class User::RelationshipsController < ApplicationController
        user.create_notification_follow!(current_user)
        redirect_to request.referer, notice: "#{user.name}をフォローしました"
      end
-    # user = User.find_by(params[:relationship][:follower_id])
-    # current_user.follow(params[:user_id])
-    # user.create_notification_follow!(current_user)
   end
   # フォロー外すとき
   def destroy

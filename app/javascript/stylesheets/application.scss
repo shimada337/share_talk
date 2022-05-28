@@ -8,7 +8,7 @@ $cOrange: #efa04c;
 $cLightBlue: lightblue;
 $cBlue: #0000ff;
 $cYellow: #ff6;
-$cLlime: #00ff00;
+$cLime: #00ff00;
 
 .btns {
   background-color: $cWhite;
@@ -75,7 +75,7 @@ $cLlime: #00ff00;
     
     & .bg-lime {
       @extend .bg-blue;
-      background-color: $cLlime;
+      background-color: $cLime;
     }
     
     &:hover {

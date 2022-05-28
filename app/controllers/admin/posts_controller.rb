@@ -7,7 +7,6 @@ class Admin::PostsController < ApplicationController
   end
   
   def index
-    # @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
     @search_posts = @search_post.result.page(params[:page]).per(20).order(created_at: :desc)
   end
 

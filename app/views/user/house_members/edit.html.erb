@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>ハウスメンバー編集</h2>
+  <h2 class="mt-3">ハウスメンバー編集</h2>
   <%= form_with model: [@user, @house_member], method: :patch do |f| %>
     <%= f.label :name, "ハウスメンバーネーム" %>
     <%= f.text_field :name, class: "form-control mb-2" %>
@@ -7,6 +7,6 @@
     <%= f.text_area :introduction, class: "form-control mb-2", rows: 5 %>
     <%= f.label :position, "職業" %>
     <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control mb-2" %>
-    <%= f.submit "変更", class: "btn btn-success" %>
+    <%= f.submit "更新", class: "btn btn-success" %>
   <% end %>
 </div>

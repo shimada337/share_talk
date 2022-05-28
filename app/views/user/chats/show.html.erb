@@ -1,45 +1,43 @@
 <div class="container">
-    <div class="row">
-        <div class="col-xs-6">
-            <h2><%= @user.name %>とのチャット</h2>
-            
-            <table class="message table table-hover">
-              <thead>
-                <tr>
-                  <th class="my_chat"><%= current_user.name %></th>
-                  <th class="you_chat"><%= @user.name %></th>
-                </tr>
-              </thead>
-              <% @chats.each do |chat| %>
-                <% if chat.user_id == current_user.id %>
-                <tbody>
-                  <tr>
-                    <td>
-                      <p class="my_chat"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
-                      <p class="my_chat"><%= chat.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-                    </td>
-                    <td></td>
-                  </tr>
-                <% else %>
-                  <tr>
-                    <td></td>
-                    <td>
-                      <p class="you_chat"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
-                      <p class="you_chat"><%= chat.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-                    </td>
-                  </tr>
-                </tbody>
-                <% end %>
-              <% end %>
-            </table>
-            
-            <%= form_with model: @chat do |f| %>
-              <div class="form-inline my-3">
-                <%= f.text_area :message, placeholder: "メッセージを入力して下さい", class: "form-control col-5", rows: 3 %>
-                <%= f.hidden_field :room_id %>
-                <%= f.submit "送信", class:"btn btn-success chat-btn ml-1" %>
-              </div>
-            <% end %>
+  <div class="row">
+    <div class="col-xs-6">
+      <h2 class="mt-3"><%= @user.name %>とのチャット</h2>
+      <table class="message table table-hover">
+        <thead>
+          <tr>
+            <th class="my_chat"><%= current_user.name %></th>
+            <th class="you_chat"><%= @user.name %></th>
+          </tr>
+        </thead>
+        <% @chats.each do |chat| %>
+          <% if chat.user_id == current_user.id %>
+            <tbody>
+              <tr>
+                <td>
+                  <p class="my_chat"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
+                  <p class="my_chat"><%= chat.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+                </td>
+                <td></td>
+              </tr>
+          <% else %>
+              <tr>
+                <td></td>
+                <td>
+                  <p class="you_chat"><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>
+                  <p class="you_chat"><%= chat.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+        <% end %>
+      </table>
+      <%= form_with model: @chat do |f| %>
+        <div class="form-inline my-3">
+          <%= f.text_area :message, placeholder: "メッセージを入力して下さい", class: "form-control col-5", rows: 3 %>
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "送信", class:"btn btn-success chat-btn ml-1" %>
         </div>
+      <% end %>
     </div>
+  </div>
 </div>

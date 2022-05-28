@@ -8,7 +8,6 @@ class User::UsersController < ApplicationController
   end
    
   def index
-    # @users = User.all.order(created_at: :desc).page(params[:page]).per(20)
     @search_users = @search_user.result.page(params[:page]).per(20).order(created_at: :desc)
   end
 
@@ -19,12 +18,12 @@ class User::UsersController < ApplicationController
     #タブメニュー、@userのハウスメンバー
     @house_members = @user.house_members.all
     #タブメニュー、@userのいいね一覧
-    @favorite_posts = Post.joins(:favorites).where(favorites: {user_id: @user.id}).order(created_at: :desc).page(params[:favorite_posts]).per(30)
+    @favorite_posts = Post.joins(:favorites).where(favorites: {user_id: @user.id}).order(created_at: :desc).page(params[:favorite_posts]).per(20)
   end
 
   def edit
     @user = User.find(params[:id])
-    #シェアハウスメンバーの登録と一覧
+    #シェアハウスメンバーの登録
     @house_member = HouseMember.new
     #シェアハウスメンバーの一覧
     @house_members = HouseMember.where(user_id: @user.id).all

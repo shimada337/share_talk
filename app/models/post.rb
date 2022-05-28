@@ -26,6 +26,7 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
+  #いいね通知
   def create_notification_favorite!(current_user)
     #いいねされているか調べている
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
@@ -44,9 +45,9 @@ class Post < ApplicationRecord
     end
   end
   
+  #コメント通知
   def create_notification_comment!(current_user, post_comment_id)
     #コメントをしているユーザー全員に通知を送る
-    # temp_ids = PostComment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
     temp_ids = PostComment.where(post_id: id).where.not(user_id: current_user.id).distinct.pluck(:user_id)
     temp_ids << user_id
     temp_ids = temp_ids.uniq

@@ -18,13 +18,11 @@
       <% @search_users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
-        <td>
-          <%= link_to user.name, admin_user_path(user) %>
-        </td>
-          <% if user.is_deleted == false %>
-            <td class="text-success">有効</td>
-          <% else %>
-            <td class="text-danger">退会</td>
+        <td><%= link_to user.name, admin_user_path(user) %></td>
+        <% if user.is_deleted == false %>
+          <td class="text-success">有効</td>
+        <% else %>
+          <td class="text-danger">退会</td>
           <% end %>
       </tr>
       <% end %>

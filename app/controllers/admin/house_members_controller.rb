@@ -3,7 +3,7 @@ class Admin::HouseMembersController < ApplicationController
   def destroy
      house_member = HouseMember.find(params[:id])
      if house_member.destroy
-      redirect_to request.referer, notice: 'ハウスメンバーを削除しました'
+      redirect_to request.referer, notice: 'シェアハウスメンバーを削除しました'
      end
   end
 end

@@ -1,66 +1,66 @@
 <div class="container">
-    <h2>ユーザー編集</h2>
-    <%= render "layouts/errors", error: @user %>
-    <%= form_with model: @user, method: :patch do |f| %>
-      <div class="form-group">
-        <label for="user_name">ユーザーネーム</label>
-        <%= f.text_field :name, placeholder:"名前", class:"form-control name" %>
-      </div>
-      <div class="form-group">
-        <label for="user_image">プロフィール画像 (png、jpg、jpeg形式のファイルを選択してください)</label>
-        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class:"form-control-file user-image" %>
-      </div>
-      <div class="form-group">
-        <label for="self_introduction">自己紹介</label>
-        <%= f.text_area :self_introduction, class:"form-control self_introduction", rows: 5, placeholder: "シェアハウスをしている目的や自己紹介をしましょう" %>
-      </div>
-      <div class="form-group">
-        <label for="area">シェアハウスしている都道府県</label>
-        <%= f.select :area, User.areas.keys, {}, class:"form-control area" %>
-      </div>
-      <div class="form-group">
-        <label for="position">職業</label>
-        <%= f.select :position, User.positions.keys, {}, class:"form-control position" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit '更新', class:"btn btn-success" %>
-      </div>
-    <% end %>
+  <h2 class="mt-3">ユーザー編集</h2>
+  <%= render "layouts/errors", error: @user %>
+  <%= form_with model: @user, method: :patch do |f| %>
+    <div class="form-group">
+      <label for="user_name">ユーザーネーム</label>
+      <%= f.text_field :name, placeholder:"名前", class:"form-control name" %>
+    </div>
+    <div class="form-group">
+      <label for="user_image">プロフィール画像 (png、jpg、jpeg形式のファイルを選択してください)</label>
+      <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class:"form-control-file user-image" %>
+    </div>
+    <div class="form-group">
+      <label for="self_introduction">自己紹介</label>
+      <%= f.text_area :self_introduction, class:"form-control self_introduction", rows: 5, placeholder: "シェアハウスをしている目的や自己紹介をしましょう" %>
+    </div>
+    <div class="form-group">
+      <label for="area">シェアハウスしている都道府県</label>
+      <%= f.select :area, User.areas.keys, {}, class:"form-control area" %>
+    </div>
+    <div class="form-group">
+      <label for="position">職業</label>
+      <%= f.select :position, User.positions.keys, {}, class:"form-control position" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit '更新', class:"btn btn-success" %>
+    </div>
+  <% end %>
     
-    <h2>ハウスメンバー一覧</h2>
-    <table class="table table-hover mb-5">
-      <thead>
-        <tr class="bg-secondary">
-          <th>メンバーネーム</th>
-          <th class="introduction">紹介</th>
-          <th>職業</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <% @house_members.each do |house_member| %>
-        <tr>
-          <td><%= house_member.name %></td>
-          <td><%= safe_join(house_member.introduction.split("\n"),tag(:br)) %></td>
-          <td><%= house_member.position %></td>
-          <td>
-            <%= link_to "編集", edit_user_house_member_path(current_user, house_member), class: "btn btn-secondary" %>
-          </td>
-          <td>
-            <%= link_to "削除", user_house_member_path(current_user, house_member), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？", class: "btn btn-danger" %>
-          </td>
-        </tr>
-      <% end %>
-   </table>
-   
-    <h2>ハウスメンバー新規登録</h2>
-    <%= form_with model: @house_member, url: '/users/@user/house_members', method: :post do |f| %>
-      <%= f.label :name, "ハウスメンバーネーム" %>
-      <%= f.text_field :name, class: "form-control mb-2", placeholder: "ニックネーム" %>
-      <%= f.label :introduction, "紹介" %>
-      <%= f.text_area :introduction, class: "form-control mb-2", rows: 5, placeholder: "どんな人ですか？" %>
-      <%= f.label :position, "職業" %>
-      <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control mb-2" %>
-      <%= f.submit '新規登録', class: "btn btn-success" %>
+  <h2 class="d-inline bg-light"><i class="fa-solid fa-people-roof"></i> シェアハウスメンバー一覧</h2>
+  <table class="table table-hover mb-5 mt-2">
+    <thead>
+      <tr class="bg-secondary">
+        <th>メンバーネーム</th>
+        <th class="introduction">紹介</th>
+        <th>職業</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @house_members.each do |house_member| %>
+      <tr>
+        <td><%= house_member.name %></td>
+        <td><%= safe_join(house_member.introduction.split("\n"),tag(:br)) %></td>
+        <td><%= house_member.position %></td>
+        <td>
+          <%= link_to "編集", edit_user_house_member_path(current_user, house_member), class: "btn btn-secondary" %>
+        </td>
+        <td>
+          <%= link_to "削除", user_house_member_path(current_user, house_member), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？", class: "btn btn-danger" %>
+        </td>
+      </tr>
     <% end %>
-  </div>
+  </table>
+   
+  <h2 class="d-inline bg-light"><i class="fa-solid fa-circle-plus"></i> シェアハウスメンバー新規登録</h2>
+  <%= form_with model: @house_member, url: '/users/@user/house_members', method: :post do |f| %>
+    <%= f.label :name, "シェアハウスメンバーネーム" %>
+    <%= f.text_field :name, class: "form-control mb-2", placeholder: "ニックネーム" %>
+    <%= f.label :introduction, "紹介" %>
+    <%= f.text_area :introduction, class: "form-control mb-2", rows: 5, placeholder: "どんな人ですか？" %>
+    <%= f.label :position, "職業" %>
+    <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control mb-2" %>
+    <%= f.submit '新規登録', class: "btn btn-success" %>
+  <% end %>
+</div>

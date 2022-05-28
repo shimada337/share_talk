@@ -36,7 +36,7 @@ class User::SessionsController < Devise::SessionsController
 
   protected
   
-  # 退会しているかを判断するメソッド
+  # 退会しているかを判断する
 def user_state
   @user = User.find_by(email: params[:user][:email])
   return if !@user

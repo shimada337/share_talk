@@ -7,7 +7,6 @@ class Admin::UsersController < ApplicationController
   end
   
   def index
-    # @users = User.all.page(params[:page]).per(5)
     @search_users = @search_user.result.page(params[:page]).per(20).order(created_at: :desc)
   end
 
