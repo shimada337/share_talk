@@ -19,8 +19,8 @@
         <%= safe_join(@user.self_introduction.split("\n"),tag(:br)) %><br>
       <% end %>
       <% if @user.name != "guestuser" %>
-        <span>職業： </span><%= @user.position %><br>
-        <span>シェアハウスしている都道府県： </span><%= @user.area %>
+        <span class="text-secondary">職業： </span><%= @user.position %><br>
+        <span class="text-secondary">シェアハウスしている都道府県： </span><%= @user.area %>
       <% end %>
     </div>
   </div>
@@ -35,9 +35,9 @@
   <% end %>
   <div>
     <%= link_to "フォロワー", user_followers_path(@user), class: "btn" %>
-    <%= @user.followers.count %>
+    ：<%= @user.followers.count %>
     <%= link_to "フォロー中", user_followings_path(@user), class: "btn" %>
-    <%= @user.followings.count %>
+    ：<%= @user.followings.count %>
   </div>
   <div class="mb-3">
     <% unless current_user == @user %>
