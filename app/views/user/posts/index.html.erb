@@ -22,7 +22,7 @@
           <%= image_tag post.get_image(500,500), class: "mx-auto rounded" %>
         </div>
       <% end %>
-      <div class="row my-3 border border-secondary rounded-lg p-3">
+      <div class="my-3 border border-secondary rounded-lg p-3 post_body">
         <%= safe_join(post.body.split("\n"),tag(:br)) %>
       </div> 
       <div class="row">

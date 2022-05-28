@@ -65,7 +65,7 @@
               <%= image_tag post.get_image(300,300), class: "mx-auto rounded" %>
             </div>
           <% end %>
-          <div class="row border border-secondary rounded-lg p-2 my-2">
+          <div class="border border-secondary rounded-lg p-2 my-2 post_body">
             <%= safe_join(post.body.split("\n"),tag(:br)) %>
           </div>
           <div class="row">
@@ -109,7 +109,7 @@
               <%= image_tag favorite_post.get_image(300,300), class: "mx-auto rounded" %>
             </div>
           <% end %>
-          <div class="row border border-secondary rounded-lg p-2 my-2">
+          <div class="border border-secondary rounded-lg p-2 my-2 post_body">
             <%= safe_join(favorite_post.body.split("\n"),tag(:br)) %>
           </div>
           <div class="row mb-5">
