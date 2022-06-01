@@ -1,5 +1,7 @@
 <div class="container">
-  <h2 class="my-3">通知</h2>
+  <div class="text-center">
+    <h2 class="my-3 rounded bg-info border border-dark d-inline-block p-1">通知</h2>
+  </div>
   <% if @notifications.exists? %>
     <%= render partial: "notification", collection: @notifications %>
     <%= paginate @notifications %>

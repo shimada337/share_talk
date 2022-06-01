@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="mt-3">投稿詳細</h2>
+  <h2 class="mt-3 rounded-pill bg-info border border-secondary d-inline-block p-1">投稿詳細</h2>
   <div class="row">
     <%=image_tag @post.user.get_profile_image(50,50), class: "mb-2 mr-2 user_profile" %>
     <%= link_to @post.user.name, user_path(@post.user.id) %>
