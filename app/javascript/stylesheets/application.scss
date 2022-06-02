@@ -9,6 +9,9 @@ $cLightBlue: lightblue;
 $cBlue: #0000ff;
 $cYellow: #ff6;
 $cLime: #00ff00;
+$cOceanblue: #e4fcff;
+$cTurquoise: #1dc1d6;
+$cAquamarine: #00BCD4;
 
 .btns {
   background-color: $cWhite;
@@ -132,6 +135,15 @@ body {
   object-fit: cover;
 }
 
+.card {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: $cAquamarine;
+  background: $cOceanblue;/*背景色*/
+  border-top: solid 6px $cTurquoise;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+}
+
 .user_profile {
   border-radius: 10px;
 }
@@ -173,6 +185,7 @@ table {
 
 .post_body {
   overflow-wrap: break-word;
+  border: dashed 2px $cBlue;
 }
 
 .introduction {
