@@ -33,7 +33,7 @@
       </button>
     <% end %>
   <% end %>
-  <div>
+  <div class="mt-3">
     <%= link_to "フォロワー", user_followers_path(@user), class: "text-white bg-info p-1" %>
     ：<%= @user.followers.count %>
     <%= link_to "フォロー中", user_followings_path(@user), class: "text-white bg-info p-1" %>

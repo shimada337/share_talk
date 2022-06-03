@@ -33,7 +33,7 @@
         <div class="favorite_buttons_<%= post.id %> mx-1">
           <%= render "user/favorites/favorite", post: post %>
         </div>
-        コメント<%= post.post_comments.count %> <i class="fa-solid fa-comment ml-1"></i>
+        コメント<span class="text-dark"><%= post.post_comments.count %></span> <i class="fa-solid fa-comment ml-1"></i>
       </div>
       </div>
     </div>

@@ -7,50 +7,74 @@
     <div class="navbar-collapse collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
+            <li>
+              <button class="btns slide-bg mr-1">
+                <span class="bg-darkcyan"></span>
+                <%= link_to user_path(current_user.id), class: "btn" do %>
+                  <i class="fa-solid fa-circle-user"></i> マイページ
+                <% end %>
+              </button>
+            </li>
           <li>
-            <%= link_to user_path(current_user.id), class: "nav-link" do %>
-              <i class="fa-solid fa-circle-user"></i> マイページ
-            <% end %>
+            <button class="btns slide-bg mr-1">
+              <span class="bg-darkcyan"></span>
+              <%= link_to posts_path, class: "btn" do %>
+                <i class="fa-solid fa-list"></i> 投稿一覧
+              <% end %>
+            </button>
           </li>
           <li>
-            <%= link_to posts_path, class: "nav-link" do %>
-              <i class="fa-solid fa-list"></i> 投稿一覧
-            <% end %>
+            <button class="btns slide-bg mr-1">
+              <span class="bg-darkcyan"></span>
+              <%= link_to users_path, class: "btn" do %>
+                <i class="fa-solid fa-users"></i> ユーザー一覧
+              <% end %>
+            </button>
           </li>
           <li>
-            <%= link_to users_path, class: "nav-link" do %>
-              <i class="fa-solid fa-users"></i> ユーザー一覧
-            <% end %>
+            <button class="btns slide-bg mr-1">
+              <span class="bg-darkcyan"></span>
+              <%= link_to user_notifications_path(current_user), class: "btn" do %>
+                <% if unchecked_notifications.any? %>
+                  <i class="fa-solid fa-circle n-circle"></i>
+                <% end %>
+                <i class="fa-solid fa-bell"></i> 通知
+              <% end %>
+            </button>
           </li>
           <li>
-            <%= link_to user_notifications_path(current_user), class: "nav-link" do %>
-            <% if unchecked_notifications.any? %>
-              <i class="fa-solid fa-circle n-circle"></i>
-            <% end %>
-              <i class="fa-solid fa-bell"></i> 通知
-            <% end %>
-          </li>
-          <li>
-            <%= link_to  destroy_user_session_path, method: :delete, class: "nav-link" do %>
-              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
-            <% end %>
+            <button class="btns slide-bg">
+              <span class="bg-darkcyan"></span>
+              <%= link_to  destroy_user_session_path, method: :delete, class: "btn" do %>
+                <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+              <% end %>
+            </button>
           </li>
     
         <% elsif admin_signed_in? %>
           <li>
-            <%= link_to admin_users_path, class: "nav-link" do %>
-              <i class="fa-solid fa-users-gear"></i> ユーザー一覧
-            <% end %>
+            <button class="btns slide-bg mr-1">
+              <span class="bg-gold"></span>
+              <%= link_to admin_users_path, class: "btn" do %>
+                <i class="fa-solid fa-users-gear"></i> ユーザー一覧
+              <% end %>
+            </button>
           </li>
           <li>
-            <%= link_to admin_posts_path, class: "nav-link" do %> 
-              <i class="fa-solid fa-list-check"></i> 投稿一覧
-            <% end %>
+            <button class="btns slide-bg mr-1">
+              <span class="bg-gold"></span>
+              <%= link_to admin_posts_path, class: "btn" do %> 
+                <i class="fa-solid fa-list-check"></i> 投稿一覧
+              <% end %>
+            </button>
           </li>
           <li>
-            <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %> 
-              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
-            <% end %>
+            <button class="btns slide-bg">
+              <span class="bg-gold"></span>
+              <%= link_to destroy_admin_session_path, method: :delete, class: "btn" do %> 
+                <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+              <% end %>
+            </button>
           </li>
         <% else %>
           <li>
