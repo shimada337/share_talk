@@ -78,6 +78,11 @@
           </li>
         <% else %>
           <li>
+            <%= link_to new_admin_session_path, class: "nav-link" do %>
+              <i class="fas fa-lock"></i> 管理者ログイン
+            <% end %>
+          </li>
+          <li>
             <%= link_to users_guest_sign_in_path, class: "nav-link", method: :post do %>
               <i class="fa-solid fa-user-lock"></i> ゲストログイン
             <% end %>
