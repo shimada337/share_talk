@@ -12,7 +12,8 @@
       <%= image_tag @user.get_profile_image(100,100), class: "user_profile" %>
     </div>
     <div class="col-8 border border-dark rounded-lg p-2 post_body">
-      <%= @user.name %><br>
+      <span class="text-secondary">ユーザーネーム： </span><%= @user.name %><br>
+      <span class="text-secondary">自己紹介： </span>
       <% if @user.self_introduction.nil? %>
         <%= @user.self_introduction %><br>
       <% else %>

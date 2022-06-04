@@ -11,7 +11,7 @@ class User::RelationshipsController < ApplicationController
   def destroy
     user = User.find(params[:user_id])
     if current_user.unfollow(params[:user_id])
-      redirect_to request.referer, notice: "#{user.name}のフォローを外しました"
+      redirect_to request.referer, alert: "#{user.name}のフォローを外しました"
     end
   end
   # フォロー一覧
