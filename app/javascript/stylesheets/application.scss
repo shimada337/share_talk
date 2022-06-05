@@ -104,17 +104,12 @@ $cGradation-right: #05FBFF;
   }
 }
 
-header {
+header, footer {
   background: linear-gradient(to right, $cGradation-left, $cGradation-right);
-  opacity: 0.8;
 }
 
 body {
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
-}
-
-footer {
-   background: linear-gradient(to right, $cGradation-left, $cGradation-right);
 }
 
 .top_heading {

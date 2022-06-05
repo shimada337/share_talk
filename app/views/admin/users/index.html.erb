@@ -1,11 +1,11 @@
 <div class="container">
+  <h2 class="mt-3 border-bottom border-primary d-inline-block">ユーザー一覧</h2>
   <div class="py-3">
     <%= search_form_for @search_user, url: '/admin/users', class: "form-inline" do |f| %>
       <%= f.text_field :name_cont, class: "form-control mx-1 col-4", placeholder: "ユーザーを検索" %>
       <%= f.submit "検索", class: "btn btn-outline-primary" %>
     <% end %>
   </div>
-  <h2>ユーザー一覧</h2>
   <table class="table table-border table-hover">
     <thead>
       <tr class="bg-light">

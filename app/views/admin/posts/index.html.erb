@@ -1,11 +1,11 @@
 <div class="container">
+  <h2 class="mt-3 border-bottom border-success d-inline-block">投稿一覧</h2>
   <div class="py-3">
     <%= search_form_for @search_post, url: '/admin/posts', class: "form-inline" do |f| %>
       <%= f.text_field :body_cont, class: "form-control mx-1 col-4", placeholder: "投稿を検索" %>
       <%= f.submit "検索", class: "btn btn-outline-primary" %>
     <% end %>
   </div>
-  <h2>投稿一覧</h2>
   <% @search_posts.each do |post| %>
     <div class="row mb-3">
       <%= image_tag post.user.get_profile_image(100,100), class: "mr-2 user_profile" %>
