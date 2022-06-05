@@ -13,6 +13,8 @@ $cOceanblue: #e4fcff;
 $cTurquoise: #1dc1d6;
 $cAquamarine: #00BCD4;
 $cDarkcyan: #008b8b;
+$cGradation-left: #1E00FF;
+$cGradation-right: #05FBFF;
 
 .btns {
   background-color: $cWhite;
@@ -102,8 +104,17 @@ $cDarkcyan: #008b8b;
   }
 }
 
+header {
+  background: linear-gradient(to right, $cGradation-left, $cGradation-right);
+  opacity: 0.8;
+}
+
 body {
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+}
+
+footer {
+   background: linear-gradient(to right, $cGradation-left, $cGradation-right);
 }
 
 .top_heading {
