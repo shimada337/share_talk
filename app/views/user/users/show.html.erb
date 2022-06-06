@@ -13,13 +13,13 @@
     </div>
     <div class="col-8 border border-dark rounded-lg p-2 post_body">
       <span class="text-secondary">ユーザーネーム： </span><%= @user.name %><br>
-      <span class="text-secondary">自己紹介： </span>
-      <% if @user.self_introduction.nil? %>
-        <%= @user.self_introduction %><br>
-      <% else %>
-        <%= safe_join(@user.self_introduction.split("\n"),tag(:br)) %><br>
-      <% end %>
       <% if @user.name != "guestuser" %>
+        <span class="text-secondary">自己紹介： </span>
+        <% if @user.self_introduction.nil? %>
+          <%= @user.self_introduction %><br>
+        <% else %>
+          <%= safe_join(@user.self_introduction.split("\n"),tag(:br)) %><br>
+        <% end %>
         <span class="text-secondary">職業： </span><%= @user.position %><br>
         <span class="text-secondary">シェアハウスしている都道府県： </span><%= @user.area %>
       <% end %>

@@ -163,7 +163,8 @@ body {
 }
 
 .admin-session {
-  border-left: double 6px $cAquamarine;
+  border: double 6px $cAquamarine;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 
 .card {
@@ -172,6 +173,11 @@ body {
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
 }
 
+.admin-user-introduction {
+  overflow: auto;
+  border: 3px solid $cBlack;
+  border-radius: 10px;
+}
 .user_profile {
   border-radius: 10px;
 }
