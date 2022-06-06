@@ -13,6 +13,7 @@ $cOceanblue: #e4fcff;
 $cTurquoise: #1dc1d6;
 $cAquamarine: #00BCD4;
 $cDarkcyan: #008b8b;
+$cGray: #5d627b;
 $cGradation-left: #1E00FF;
 $cGradation-right: #05FBFF;
 
@@ -152,10 +153,20 @@ body {
   object-fit: cover;
 }
 
+.session-heading {
+  border: dashed 3px $cBlack;
+}
+
+.registration-form {
+  border-top: solid 5px $cGray;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+.admin-session {
+  border-left: double 6px $cAquamarine;
+}
+
 .card {
-  padding: 0.5em 1em;
-  margin: 2em 0;
-  color: $cAquamarine;
   background: $cOceanblue;
   border-top: solid 6px $cTurquoise;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);

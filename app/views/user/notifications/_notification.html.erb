@@ -1,8 +1,8 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
   
-  <div class="mb-2 pb-2 border-bottom">
-    <div class="row">
+  <div class="mb-2">
+    <div class="row border-bottom pb-2">
       <% unless current_user == visitor %>
         <%= link_to user_path(visitor) do %>
           <%= image_tag visitor.get_profile_image(80,80), class: "user_profile mr-1" %>
