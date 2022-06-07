@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="mt-3">シェアハウスメンバー編集</h2>
   <%= form_with model: [@user, @house_member], method: :patch do |f| %>
-    <%= f.label :name, "ハウスメンバーネーム" %>
+    <%= f.label :name, "シェアハウスメンバーネーム" %>
     <%= f.text_field :name, class: "form-control mb-2" %>
     <%= f.label :introduction, "紹介" %>
     <%= f.text_area :introduction, class: "form-control mb-2", rows: 5 %>

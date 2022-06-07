@@ -13,6 +13,7 @@ class User::PostsController < ApplicationController
 
   def index
     @search_posts = @search_post.result.page(params[:page]).per(20).order(created_at: :desc)
+    
   end
 
   def show

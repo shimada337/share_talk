@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="mt-3"><%= @user.name %>のユーザー情報編集</h2>
+  <h2 class="mt-3 border-bottom border-secondary d-inline-block"><%= @user.name %>のユーザー情報編集</h2>
   <%= render "layouts/errors", error: @user %>
   <%= form_with model: [:admin, @user] do |f| %>
     <div class="field row">

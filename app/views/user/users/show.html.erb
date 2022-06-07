@@ -29,7 +29,7 @@
     <% if (current_user.following? @user) && (@user.following? current_user) %>
       <button class="btns slide-bg">
         <span class="bg-lime"></span><%= link_to chat_path(@user.id), class: "btn text-reset" do %>
-          <i class="fa-solid fa-envelope"></i> メッセージを送る
+          <i class="fa-solid fa-envelope"></i> チャット画面へ
         <% end %>
       </button>
     <% end %>
@@ -53,15 +53,15 @@
   <!--タブメニュー-->
   <div class="wrap">
     <ul id="tab-menu">
-      <li><a href="#post_index" class="active">投稿一覧</a></li>
-      <li><a href="#house_member" class="">シェアハウスメンバー</a></li>
-      <li><a href="#favorites" class="">いいねした投稿</a></li>
+      <li><a href="#post_index" class="active">投稿一覧 <em>(<%= @all_posts.count %>)</em></a></li>
+      <li><a href="#house_member" class="">シェアハウスメンバー <em>(<%= @house_members.count %>)</em></a></li>
+      <li><a href="#favorites" class="">いいねした投稿 <em>(<%= @all_favorite_posts.count %>)</em></a></li>
     </ul>
     
     <div id="tab-contents">
       <div id="post_index" class="tab">
         <% @posts.each do |post| %>
-          <div class="simple_post p-1 mt-3">
+          <div class="simple_post p-1 mb-3">
             <%= link_to post_path(post) do %>
               <div class="row posts">
                 <%= image_tag post.get_image(300,300), class: "mx-auto rounded" %>
@@ -103,7 +103,7 @@
       
       <div id="favorites" class="tab">
         <% @favorite_posts.each do |favorite_post| %>
-          <div class="simple_post p-1 mt-3">
+          <div class="simple_post p-1 mb-3">
             <div class="row ml-2">
               <%= image_tag favorite_post.user.get_profile_image(80,80), class: "user_profile mr-1" %>
               <%= link_to favorite_post.user.name, user_path(favorite_post.user) %>

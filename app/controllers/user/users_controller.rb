@@ -15,10 +15,12 @@ class User::UsersController < ApplicationController
     @user = User.find(params[:id])
     #タブメニュー、@userの投稿一覧
     @posts = @user.posts.all.order(created_at: :desc).page(params[:my_posts]).per(20)
+    @all_posts = @user.posts.all
     #タブメニュー、@userのハウスメンバー
     @house_members = @user.house_members.all
     #タブメニュー、@userのいいね一覧
     @favorite_posts = Post.joins(:favorites).where(favorites: {user_id: @user.id}).order(created_at: :desc).page(params[:favorite_posts]).per(20)
+    @all_favorite_posts = @user.favorites.all
   end
 
   def edit

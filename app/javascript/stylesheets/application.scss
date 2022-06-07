@@ -3,12 +3,12 @@
 
 $cWhite: white;
 $cBlack: black;
-$cGreen: #008000;
+$cSession_btn: #008000;
 $cOrange: #efa04c;
 $cLightBlue: lightblue;
 $cBlue: #0000ff;
 $cYellow: #ff6;
-$cLime: #00ff00;
+$cChat: #00ff00;
 $cOceanblue: #e4fcff;
 $cTurquoise: #1dc1d6;
 $cAquamarine: #00BCD4;
@@ -41,7 +41,7 @@ $cGradation-right: #05FBFF;
       display: inline-block;
       width: 100%;
       height: 100%;
-      background-color: $cGreen;
+      background-color: $cSession_btn;
       position: absolute;
       top: 0;
       left: 0;
@@ -82,7 +82,7 @@ $cGradation-right: #05FBFF;
     
     & .bg-lime {
       @extend .bg-blue;
-      background-color: $cLime;
+      background-color: $cChat;
     }
     
     & .bg-darkcyan {
@@ -267,19 +267,19 @@ table {
 }
 
 #tab-menu li a {
-  color: #fff;
+  color: $cWhite;
   text-decoration: none;
   display: block;
   padding: 20px;
   text-align: center;
-  background: #000;
+  background: $cBlack;
   border: 1px solid #000;
   border-bottom: none;
 }
 
 #tab-menu .active {
   background-color: $cWhite;
-  color: #000;
+  color: $cBlack;
 }
 
 #tab-contents {
@@ -294,6 +294,6 @@ table {
 }
 
 #tab-contents p {
-  color: #000;
+  color: $cBlack;
   line-height: 2.5;
 }

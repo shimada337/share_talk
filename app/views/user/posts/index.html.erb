@@ -10,7 +10,9 @@
   </div>
   <div class="row">
     <button class="btns slide-bg offset-md-8">
-      <span class="bg-blue"></span><%= link_to '新規投稿する', new_post_path, class: "btn text-reset" %>
+      <span class="bg-blue"></span><%= link_to new_post_path, class: "btn text-reset" do %>
+        <i class="fas fa-plus-circle"></i> 新規投稿する
+      <% end %>
     </button>
   </div>
   <% @search_posts.each do |post| %>

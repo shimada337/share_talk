@@ -7,7 +7,7 @@
     <% end %>
   </div>
   <% @search_posts.each do |post| %>
-    <div class="simple_post p-1 mt-3">
+    <div class="simple_post p-1 mb-3">
       <div class="row ml-2">
         <%= image_tag post.user.get_profile_image(100,100), class: "mr-2 user_profile" %>
         <%= link_to post.user.name, admin_user_path(post.user) %>
