@@ -178,8 +178,21 @@ body {
   border: 3px solid $cBlack;
   border-radius: 10px;
 }
+
+.simple_post {
+  border: 5px solid $cBlack;
+  border-radius: 10px;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+
 .user_profile {
   border-radius: 10px;
+}
+
+.user_introduction {
+  border: 3px solid $cBlack;
+  border-radius: 10px;
+  overflow-wrap: break-word;
 }
 
 .custom-file {
