@@ -12,3 +12,7 @@ document.addEventListener("turbolinks:load", function() {
     });
   })
 })
+
+$(function(){
+  setTimeout("$('.flash').fadeOut('slow')", 2000);
+});

@@ -53,3 +53,5 @@ ja:
        name: "ユーザーネーム"
        email: "メールアドレス"
        profile_image: "プロフィール画像"
+      post_comment:
+       comment: "コメント"

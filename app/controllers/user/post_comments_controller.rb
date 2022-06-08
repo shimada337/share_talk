@@ -9,8 +9,7 @@ class User::PostCommentsController < ApplicationController
       @post.create_notification_comment!(current_user, @comment.id)
       flash.now[:notice] = 'コメントを送信しました'
     else
-      flash[:alert] = 'コメントの送信に失敗しました'
-      redirect_to request.referer
+      render :error
     end
   end
 

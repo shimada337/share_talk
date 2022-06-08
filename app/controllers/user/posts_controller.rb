@@ -1,5 +1,6 @@
 class User::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :post_find, only: [:show, :edit, :destroy, :correct_post, :update]
   before_action :correct_post,only: [:edit]
   before_action :search
   
@@ -17,13 +18,11 @@ class User::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_comments = @post.post_comments
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
   
   def create
@@ -38,7 +37,6 @@ class User::PostsController < ApplicationController
   end
   
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path(@post), notice: '投稿を更新しました'
     else
@@ -48,7 +46,6 @@ class User::PostsController < ApplicationController
   end
   
   def destroy
-    @post = Post.find(params[:id])
     if @post.destroy
       redirect_to user_path(current_user), notice: '投稿を削除しました'
     end
@@ -62,9 +59,12 @@ class User::PostsController < ApplicationController
   
   #url直打ち対策
   def correct_post
-    @post = Post.find(params[:id])
     unless @post.user.id == current_user.id
       redirect_to posts_path, notice: 'あなたの投稿以外の編集画面へは遷移できません'
     end
+  end
+  
+  def post_find
+    @post = Post.find(params[:id])
   end
 end
