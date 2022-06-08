@@ -17,10 +17,8 @@
         <%= render 'layouts/header' %>
       </header>
       <main>
-        <div class="flash">
-          <% flash.each do |key, value| %>
-            <%= content_tag(:div, value, class: key) %>
-          <% end %>
+        <div class="flash-message">
+          <%= render 'layouts/flash' %>
         </div>
         <%= yield %>
       </main>

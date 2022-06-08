@@ -24,35 +24,11 @@
         <i class="fa-solid fa-trash text-danger"></i>
       <% end %>
     <% end %>
-    
-    <table class="table table-hover mt-3">
-      <thead>
-        <tr>
-          <th>コメント投稿者</th>
-          <th>コメント内容</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @post_comments.each do |comment| %>
-          <tr>
-            <td><%= link_to comment.user.name, user_path(comment.user) %></td>
-            <td>
-              <p><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
-              <p><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-            </td>
-            <% if comment.user == current_user %>
-              <td><%= link_to "削除", post_post_comment_path(@post, comment), method: :delete, "data-confirm" => "コメントを本当に削除しますか？", class: "btn btn-danger" %></td>
-            <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
   </div>
-  <%= form_with model: [@post, @post_comment] do |f| %>
-    <div class="form-inline my-3">
-      <%= f.text_area :comment, placeholder: "コメントを入力して下さい", class: "form-control col-6" %>
-      <%= f.submit "送信", class: "btn btn-primary ml-2" %>
+    
+    <div class="comment_area">
+      <%= render 'user/post_comments/comments', post_comments: @post_comments, post: @post %>
     </div>
-  <% end %>
+    
+    <%= render 'user/post_comments/form', post: @post, post_comment: @post_comment %>
 </div>

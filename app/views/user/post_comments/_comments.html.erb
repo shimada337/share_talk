@@ -1,0 +1,23 @@
+<table class="table table-hover mt-3">
+  <thead>
+    <tr>
+      <th>コメント投稿者</th>
+      <th>コメント内容</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% post.post_comments.each do |comment| %>
+      <tr>
+        <td><%= link_to comment.user.name, user_path(comment.user) %></td>
+        <td>
+          <p><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
+          <p><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        </td>
+        <% if comment.user == current_user %>
+          <td><%= link_to "削除", post_post_comment_path(post, comment), method: :delete, "data-confirm" => "コメントを本当に削除しますか？", class: "btn btn-danger", remote: true %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
