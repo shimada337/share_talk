@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_26_075456) do
+ActiveRecord::Schema.define(version: 2022_06_09_103405) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,21 @@ ActiveRecord::Schema.define(version: 2022_05_26_075456) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "answers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "board_id"
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "boards", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
@@ -85,6 +100,8 @@ ActiveRecord::Schema.define(version: 2022_05_26_075456) do
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "room_id"
+    t.integer "chat_id"
   end
 
   create_table "post_comments", force: :cascade do |t|

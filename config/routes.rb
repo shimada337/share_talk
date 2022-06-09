@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :house_members, only: [:destroy]
     resources :post_comments, only: [:destroy]
+    resources :boards, only: [:index, :show, :destroy]
   end
   
   scope module: "user" do 
@@ -29,6 +30,8 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
+    
+    resources :boards, only: [:index, :show, :create, :destroy]
     
     get 'chat/:id', to: 'chats#show', as: 'chat'
     resources :chats, only: [:create]
