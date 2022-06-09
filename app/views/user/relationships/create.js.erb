@@ -1,0 +1,5 @@
+$('.user_index').html("<%= j(render 'user/users/user_index', search_users: @search_users) %>")
+$('.user_follow').html("<%= j(render 'user/users/user_follow', user: @user) %>")
+$('.follow_count').html("<%= j(render 'user/users/follow_count', user: @user) %>")
+$('.user_chat').html("<%= j(render 'user/users/user_chat', user: @user) %>")
+$('.flash-message').html("<%= j(render 'layouts/flash') %>");

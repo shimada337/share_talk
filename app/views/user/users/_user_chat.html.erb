@@ -1,0 +1,9 @@
+<% unless current_user == user %>
+  <% if (current_user.following? user) && (user.following? current_user) %>
+    <button class="btns slide-bg">
+      <span class="bg-lime"></span><%= link_to chat_path(user.id), class: "btn text-reset" do %>
+        <i class="fa-solid fa-envelope"></i> チャット画面へ
+      <% end %>
+    </button>
+  <% end %>
+<% end %>
