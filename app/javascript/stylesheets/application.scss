@@ -148,6 +148,11 @@ body {
   position: inherit;
 }
 
+.error_messages {
+  background-color: $cOrange;
+  padding: 5px 10px;
+}
+
 .top-img {
   height: 600px;
   object-fit: cover;
