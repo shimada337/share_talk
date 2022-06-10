@@ -1,7 +1,7 @@
 class User::BoardsController < ApplicationController
   def index
     @board = Board.new
-    @boards = Board.all.includes(:user).order(created_at: :desc)
+    @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def show

@@ -3,10 +3,11 @@
   <p>シェアハウスならではの悩みや疑問をshareしてみんなの意見を聞こう！</p>
   <div class="board">
     <% @boards.each do |board| %>
-      <div class="board-box">
+      <div class="board-box mb-2">
         <%= link_to board.title, board_path(board) %>
       </div>
     <% end %>
+    <%= paginate @boards %>
   </div>
   <%= form_with model: @board, method: :post do |f| %>
   <%= f.label :title, "質問したいこと" %>
