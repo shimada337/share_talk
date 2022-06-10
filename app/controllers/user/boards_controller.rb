@@ -14,16 +14,16 @@ class User::BoardsController < ApplicationController
     @board = Board.new(board_params)
     @board.user_id = current_user.id
     if @board.save
-      redirect_to boards_path, notice: 'ボードを作成しました'
+      redirect_to boards_path, notice: '掲示板を作成しました'
     else
-      redirect_to boards_path, alert: 'ボードの作成に失敗しました'
+      redirect_to boards_path, alert: '掲示板の作成に失敗しました'
     end
   end
   
   def destroy
     @board = Board.find(params[:id])
     @board.destroy
-    redirect_to boards_path, notice: 'ボードを削除しました'
+    redirect_to boards_path, notice: '掲示板を削除しました'
   end
   
   private
