@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :house_members, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
+  has_many :boards, dependent: :destroy
+  has_many :answers, dependent: :destroy
   #自分からの通知
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   #相手からの通知

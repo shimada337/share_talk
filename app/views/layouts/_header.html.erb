@@ -7,14 +7,14 @@
     <div class="navbar-collapse collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-            <li>
-              <button class="btns slide-bg mr-1">
-                <span class="bg-darkcyan"></span>
-                <%= link_to user_path(current_user.id), class: "btn" do %>
-                  <i class="fa-solid fa-circle-user"></i> マイページ
-                <% end %>
-              </button>
-            </li>
+          <li>
+            <button class="btns slide-bg mr-1">
+              <span class="bg-darkcyan"></span>
+              <%= link_to user_path(current_user.id), class: "btn" do %>
+                <i class="fa-solid fa-circle-user"></i> マイページ
+              <% end %>
+            </button>
+          </li>
           <li>
             <button class="btns slide-bg mr-1">
               <span class="bg-darkcyan"></span>
