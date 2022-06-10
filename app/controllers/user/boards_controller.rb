@@ -6,6 +6,8 @@ class User::BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @answer = Answer.new
+    @answers = @board.answers
   end
   
   def create
@@ -19,6 +21,9 @@ class User::BoardsController < ApplicationController
   end
   
   def destroy
+    @board = Board.find(params[:id])
+    @board.destroy
+    redirect_to boards_path, notice: 'ボードを削除しました'
   end
   
   private

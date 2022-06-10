@@ -31,7 +31,9 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
     end
     
-    resources :boards, only: [:index, :show, :create, :destroy]
+    resources :boards, only: [:index, :show, :create, :destroy] do
+      resources :answers, only: [:create, :destroy]
+    end
     
     get 'chat/:id', to: 'chats#show', as: 'chat'
     resources :chats, only: [:create]
