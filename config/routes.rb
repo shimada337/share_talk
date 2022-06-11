@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :house_members, only: [:destroy]
     resources :post_comments, only: [:destroy]
-    resources :boards, only: [:index, :show, :destroy]
+    resources :boards, only: [:index, :show, :destroy] do
+      resources :answers, only: [:destroy]
+    end
   end
   
   scope module: "user" do 
