@@ -14,6 +14,7 @@ $cOceanblue: #e4fcff;
 $cTurquoise: #1dc1d6;
 $cAquamarine: #00BCD4;
 $cDarkcyan: #008b8b;
+$cGold: #ffd700;
 $cGray: #5d627b;
 $cBoard: #114400;
 $cBoard-border: #a60;
@@ -95,7 +96,7 @@ $cGradation-right: #05FBFF;
     
     & .bg-gold {
       @extend .bg-blue;
-      background-color: #ffd700;
+      background-color: $cGold;
     }
     
     &:hover {
@@ -270,6 +271,12 @@ table {
   border: solid 3px $cBoard-border;
   padding: 8px;
   color: $cWhite;
+}
+
+.board-rank {
+  background-color: $cGold;
+  display: inline-block;
+  padding: 3px;
 }
 
 .introduction {

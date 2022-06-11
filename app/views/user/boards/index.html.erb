@@ -22,11 +22,28 @@
 <% if @board_answer_ranks.blank? %>
   <p class="mt-5">ランキングがありません</p>
 <% else %>
-  <h3 class="mt-5"><i class="fas fa-crown"></i> 回答数ランキング</h3>
-  <% @board_answer_ranks.each.with_index(1) do |board, i| %>
-    <div>
-      第<%= i %>位
-      <%= link_to board.title, board_path(board) %>回答数：(<%= board.answers.count %>)
+  <h3 class="mt-5 board-rank"><i class="fas fa-crown"></i> 回答数ランキング</h3>
+  
+  <% answers = 0 %>
+  <% same_rank = 1 %>
+  
+  <% @board_answer_ranks.each.with_index(1) do |board, ranking| %>
+    <div class="mb-2">
+      <% if ranking == 1 %>
+        <strong>第<%= ranking %>位</strong>
+        <%= link_to board.title, board_path(board) %> 回答数：(<%= board.answers.count %>)
+      <% else %>
+        <% if board.answers.count != answers %>
+          <strong>第<%= ranking %>位</strong>
+          <%= link_to board.title, board_path(board) %> 回答数：(<%= board.answers.count %>)
+          <% same_rank = 1 %>
+        <% else %>
+          <strong>第<%= ranking - same_rank %>位</strong>
+          <%= link_to board.title, board_path(board) %> 回答数：(<%= board.answers.count %>)
+          <% same_rank = same_rank + 1 %>
+        <% end %>
+      <% end %>
+      <% answers = board.answers.count %>
     </div>
   <% end %>
 <% end %>
