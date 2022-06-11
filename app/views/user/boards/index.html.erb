@@ -7,7 +7,7 @@
     <div class="board">
       <% @boards.each do |board| %>
         <div class="board-box mb-2">
-          <%= link_to board.title, board_path(board) %>
+          ・<%= link_to board.title, board_path(board) %>
         </div>
       <% end %>
       <%= paginate @boards %>
@@ -17,5 +17,17 @@
   <%= f.label :title, "質問したいこと" %>
   <%= f.text_field :title, class: "form-control", placeholder: '質問を入力してください' %>
   <%= f.submit '掲示板作成', class: "btn btn-success mt-3" %>
+<% end %>
+
+<% if @board_answer_ranks.blank? %>
+  <p class="mt-5">ランキングがありません</p>
+<% else %>
+  <h3 class="mt-5"><i class="fas fa-crown"></i> 回答数ランキング</h3>
+  <% @board_answer_ranks.each.with_index(1) do |board, i| %>
+    <div>
+      第<%= i %>位
+      <%= link_to board.title, board_path(board) %>回答数：(<%= board.answers.count %>)
+    </div>
+  <% end %>
 <% end %>
 </div>

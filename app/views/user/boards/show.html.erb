@@ -9,7 +9,7 @@
   </div>
   
   <% if @answers.exists? %>
-    <h3 class="mt-5">回答</h3>
+    <h3 class="mt-5">回答 <em>(<strong><%= @answers.count %></strong>件)</em></h3>
     <% @answers.each do |answer| %>
       <div class="answers mb-2">
         <%= link_to answer.user.name, user_path(answer.user_id) %>

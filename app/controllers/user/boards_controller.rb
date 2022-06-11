@@ -2,6 +2,7 @@ class User::BoardsController < ApplicationController
   def index
     @board = Board.new
     @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
+    @board_answer_ranks = Board.find(Answer.group(:board_id).order('count(board_id) desc').limit(3).pluck(:board_id))
   end
 
   def show
