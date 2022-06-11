@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Kaisei+Opti&family=Yomogi&family=Zen+Kaku+Gothic+New:wght@300&family=Zen+Kurenaido&display=swap');
 //@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 $cWhite: white;
@@ -115,6 +116,10 @@ body {
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
 }
 
+.font {
+  font-family: 'Yomogi', cursive;
+}
+
 .font-init {
   font-family: initial;
 }
@@ -164,8 +169,11 @@ body {
   object-fit: cover;
 }
 
-.session-heading {
+.heading {
   border: dashed 3px $cBlack;
+  display: inline-block;
+  padding: 2px;
+  margin-top: 10px;
 }
 
 .registration-form {

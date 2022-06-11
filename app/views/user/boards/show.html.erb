@@ -2,7 +2,7 @@
   <h2 class="mt-3">掲示板詳細</h2>
   <div class="board">
     <%= link_to @board.user.name, user_path(@board.user_id) %>
-    <p class="board-title"><%= @board.title %></p>
+    <p class="font"><%= @board.title %></p>
     <% if @board.user_id == current_user.id %>
       <%= link_to "削除", board_path(@board), method: :delete, "data-confirm" => "本当に掲示板を削除しますか？", class: "btn btn-danger" %>
     <% end %>
