@@ -1,8 +1,9 @@
 <div class="container">
-  <h2 class="mt-3">掲示板詳細</h2>
+  <h2 class="heading">掲示板詳細</h2>
   <div class="board">
     <%= link_to @board.user.name, user_path(@board.user_id) %>
     <p class="font"><%= @board.title %></p>
+    <%= @board.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
     <% if @board.user_id == current_user.id %>
       <%= link_to "削除", board_path(@board), method: :delete, "data-confirm" => "本当に掲示板を削除しますか？", class: "btn btn-danger" %>
     <% end %>
@@ -14,6 +15,7 @@
       <div class="answers mb-2">
         <%= link_to answer.user.name, user_path(answer.user_id) %>
         <p><%= safe_join(answer.body.split("\n"),tag(:br)) %></p>
+        <%= answer.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
         <% if answer.user.id == current_user.id %>
           <%= link_to "削除", board_answer_path(@board.id, answer.id), method: :delete, "data-confirm" => "本当に回答を削除しますか？", class: "btn btn-danger" %>
         <% end %>

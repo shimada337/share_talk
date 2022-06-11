@@ -1,4 +1,6 @@
 class User::AnswersController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     board = Board.find(params[:board_id])
     answer = current_user.answers.new(answer_params)

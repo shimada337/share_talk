@@ -1,7 +1,10 @@
 class User::BoardsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @board = Board.new
-    @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
+    @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+    #掲示板の回答数のランキング
     @board_answer_ranks = Board.find(Answer.group(:board_id).order('count(board_id) desc').limit(5).pluck(:board_id))
   end
 
@@ -17,7 +20,10 @@ class User::BoardsController < ApplicationController
     if @board.save
       redirect_to boards_path, notice: '掲示板を作成しました'
     else
-      redirect_to boards_path, alert: '掲示板の作成に失敗しました'
+      @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+      @board_answer_ranks = Board.find(Answer.group(:board_id).order('count(board_id) desc').limit(5).pluck(:board_id))
+      flash.now[:alert] = '掲示板の作成に失敗しました'
+      render :index
     end
   end
   

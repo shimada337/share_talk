@@ -13,6 +13,8 @@
       <%= paginate @boards %>
     </div>
   <% end %>
+  
+  <%= render 'layouts/errors', error: @board %>
   <%= form_with model: @board, method: :post do |f| %>
   <%= f.label :title, "質問したいこと" %>
   <%= f.text_field :title, class: "form-control", placeholder: '質問を入力してください' %>
@@ -22,7 +24,7 @@
 <% if @board_answer_ranks.blank? %>
   <p class="mt-5">ランキングがありません</p>
 <% else %>
-  <h3 class="mt-5 board-rank"><i class="fas fa-crown"></i> 回答数ランキング</h3>
+  <h3 class="mt-5 board-rank"><i class="fas fa-crown"></i> 回答数ランキング <i class="fas fa-crown"></i></h3>
   
   <% answers = 0 %>
   <% same_rank = 1 %>
@@ -31,15 +33,15 @@
     <div class="mb-2">
       <% if ranking == 1 %>
         <strong>第<%= ranking %>位</strong>
-        <%= link_to board.title, board_path(board) %> 回答数：(<%= board.answers.count %>)
+        <%= link_to board.title, board_path(board) %> 回答：<em>(<%= board.answers.count %>件)</em>
       <% else %>
         <% if board.answers.count != answers %>
           <strong>第<%= ranking %>位</strong>
-          <%= link_to board.title, board_path(board) %> 回答数：(<%= board.answers.count %>)
+          <%= link_to board.title, board_path(board) %> 回答：<em>(<%= board.answers.count %>件)</em>
           <% same_rank = 1 %>
         <% else %>
           <strong>第<%= ranking - same_rank %>位</strong>
-          <%= link_to board.title, board_path(board) %> 回答数：(<%= board.answers.count %>)
+          <%= link_to board.title, board_path(board) %> 回答：<em>(<%= board.answers.count %>件)</em>
           <% same_rank = same_rank + 1 %>
         <% end %>
       <% end %>

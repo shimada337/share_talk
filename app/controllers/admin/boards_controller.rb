@@ -1,6 +1,6 @@
 class Admin::BoardsController < ApplicationController
   def index
-    @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
+    @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
