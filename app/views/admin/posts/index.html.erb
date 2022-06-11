@@ -6,25 +6,30 @@
       <%= f.submit "検索", class: "btn btn-outline-primary" %>
     <% end %>
   </div>
-  <% @search_posts.each do |post| %>
-    <div class="simple_post p-1 mb-3">
-      <div class="row ml-2">
-        <%= image_tag post.user.get_profile_image(100,100), class: "mr-2 user_profile" %>
-        <%= link_to post.user.name, admin_user_path(post.user) %>
-      </div>
-      <%= link_to admin_post_path(post) do %>
-        <div class="row posts">
-          <%= image_tag post.get_image(500,500), class: "mx-auto rounded" %>
+  
+  <% if @search_posts.exists? %>
+    <% @search_posts.each do |post| %>
+      <div class="simple_post p-1 mb-3">
+        <div class="row ml-2">
+          <%= image_tag post.user.get_profile_image(100,100), class: "mr-2 user_profile" %>
+          <%= link_to post.user.name, admin_user_path(post.user) %>
         </div>
-      <% end %>
-      <div class="my-3 mx-2 border border-secondary rounded-lg p-3 post_body">
-        <%= safe_join(post.body.split("\n"),tag(:br)) %>
+        <%= link_to admin_post_path(post) do %>
+          <div class="row posts">
+            <%= image_tag post.get_image(500,500), class: "mx-auto rounded" %>
+          </div>
+        <% end %>
+        <div class="my-3 mx-2 border border-secondary rounded-lg p-3 post_body">
+          <%= safe_join(post.body.split("\n"),tag(:br)) %>
+        </div>
+        <div class="row ml-2">
+          <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+          コメント<%= post.post_comments.count %>
+        </div>
       </div>
-      <div class="row ml-2">
-        <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-        コメント<%= post.post_comments.count %>
-      </div>
-    </div>
+    <% end %>
+    <%= paginate @search_posts %>
+  <% else %>
+    <p class="my-3 text-warning"><i class="fas fa-search"></i> 検索した投稿は見つかりませんでした。</p>
   <% end %>
-  <%= paginate @search_posts %>
 </div>

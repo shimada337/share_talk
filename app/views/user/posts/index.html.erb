@@ -15,30 +15,35 @@
       <% end %>
     </button>
   </div>
-  <% @search_posts.each do |post| %>
-    <div class="mb-5">
-      <div class="card p-3 mt-3">
-        <div class="row">
-          <%= image_tag post.user.get_profile_image(100,100), class: "mr-2 user_profile ml-2" %>
-          <%= link_to post.user.name, user_path(post.user.id) %>
-        </div>
-        <%= link_to post_path(post) do %>
-          <div class="row posts">
-            <%= image_tag post.get_image(500,500), class: "mx-auto rounded" %>
+  
+  <% if @search_posts.exists? %>
+    <% @search_posts.each do |post| %>
+      <div class="mb-5">
+        <div class="card p-3 mt-3">
+          <div class="row">
+            <%= image_tag post.user.get_profile_image(100,100), class: "mr-2 user_profile ml-2" %>
+            <%= link_to post.user.name, user_path(post.user.id) %>
           </div>
-        <% end %>
-      <div class="my-3 rounded-lg p-3 post_body text-dark">
-        <%= safe_join(post.body.split("\n"),tag(:br)) %>
-      </div>
-      <div class="row pl-3">
-        <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-        <div class="favorite_buttons_<%= post.id %> mx-1">
-          <%= render "user/favorites/favorite", post: post %>
+          <%= link_to post_path(post) do %>
+            <div class="row posts">
+              <%= image_tag post.get_image(500,500), class: "mx-auto rounded" %>
+            </div>
+          <% end %>
+        <div class="my-3 rounded-lg p-3 post_body text-dark">
+          <%= safe_join(post.body.split("\n"),tag(:br)) %>
         </div>
-        コメント<span class="text-dark"><%= post.post_comments.count %></span> <i class="fa-solid fa-comment ml-1"></i>
+        <div class="row pl-3">
+          <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+          <div class="favorite_buttons_<%= post.id %> mx-1">
+            <%= render "user/favorites/favorite", post: post %>
+          </div>
+          コメント<span class="text-dark"><%= post.post_comments.count %></span> <i class="fa-solid fa-comment ml-1"></i>
+        </div>
+        </div>
       </div>
-      </div>
-    </div>
+    <% end %>
+    <%= paginate @search_posts %>
+  <% else %>
+    <p class="my-3 text-warning"><i class="fas fa-search"></i> 検索した投稿は見つかりませんでした。</p>
   <% end %>
-  <%= paginate @search_posts %>
 </div>

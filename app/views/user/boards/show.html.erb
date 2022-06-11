@@ -1,5 +1,6 @@
 <div class="container">
   <h2 class="heading">掲示板詳細</h2>
+  <h3 class="mt-2 font-italic">〜質問〜</h3>
   <div class="board">
     <%= link_to @board.user.name, user_path(@board.user_id) %>
     <p class="font"><%= @board.title %></p>
@@ -14,7 +15,7 @@
     <% @answers.each do |answer| %>
       <div class="answers mb-2">
         <%= link_to answer.user.name, user_path(answer.user_id) %>
-        <p><%= safe_join(answer.body.split("\n"),tag(:br)) %></p>
+        <p class="font"><%= safe_join(answer.body.split("\n"),tag(:br)) %></p>
         <%= answer.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
         <% if answer.user.id == current_user.id %>
           <%= link_to "削除", board_answer_path(@board.id, answer.id), method: :delete, "data-confirm" => "本当に回答を削除しますか？", class: "btn btn-danger" %>

@@ -27,31 +27,35 @@
     </div>
   <% end %>
     
-  <h2 class="d-inline bg-light"><i class="fa-solid fa-people-roof"></i> シェアハウスメンバー一覧</h2>
-  <table class="table table-hover mb-5 mt-2">
-    <thead>
-      <tr class="bg-secondary">
-        <th>メンバーネーム</th>
-        <th class="introduction">紹介</th>
-        <th>職業</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <% @house_members.each do |house_member| %>
-      <tr>
-        <td><%= house_member.name %></td>
-        <td><%= safe_join(house_member.introduction.split("\n"),tag(:br)) %></td>
-        <td><%= house_member.position %></td>
-        <td>
-          <%= link_to "編集", edit_user_house_member_path(current_user, house_member), class: "btn btn-secondary" %>
-        </td>
-        <td>
-          <%= link_to "削除", user_house_member_path(current_user, house_member), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？", class: "btn btn-danger" %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+  <h2 class="d-inline bg-light"><i class="fa-solid fa-people-roof"></i> シェアハウスメンバー</h2>
+  <% if @house_members.exists? %>
+    <table class="table table-hover mb-5 mt-2">
+      <thead>
+        <tr class="bg-secondary">
+          <th>メンバーネーム</th>
+          <th class="introduction">紹介</th>
+          <th>職業</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @house_members.each do |house_member| %>
+        <tr>
+          <td><%= house_member.name %></td>
+          <td><%= safe_join(house_member.introduction.split("\n"),tag(:br)) %></td>
+          <td><%= house_member.position %></td>
+          <td>
+            <%= link_to "編集", edit_user_house_member_path(current_user, house_member), class: "btn btn-secondary" %>
+          </td>
+          <td>
+            <%= link_to "削除", user_house_member_path(current_user, house_member), method: :delete, "data-confirm" => "シェアハウスメンバーを本当に削除しますか？", class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p class="my-3 text-warning">シェアハウスメンバーを登録していません</p>
+  <% end %>
    
   <h2 class="d-inline bg-light"><i class="fa-solid fa-circle-plus"></i> シェアハウスメンバー新規登録</h2>
   <%= form_with model: @house_member, url: '/users/@user/house_members', method: :post do |f| %>
