@@ -23,6 +23,8 @@
       </div>
     <% end %>
     <%= paginate @answers %>
+  <% else %>
+    <p class="text-warning">解答はありません</p>
   <% end %>
   
   <%= form_with model: [@board, @answer], method: :post do |f| %>

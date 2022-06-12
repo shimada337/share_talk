@@ -16,6 +16,10 @@
     </button>
   </div>
   
+  <div>
+    <%= sort_link(@search_post, :created_at, "古い順/新しい順") %> | 
+    <%= sort_link(@search_post, :favorites_count, "いいね多い順/少ない順", default_order: :desc) %>
+  </div>
   <% if @search_posts.exists? %>
     <% @search_posts.each do |post| %>
       <div class="mb-5">

@@ -1,11 +1,11 @@
 class Admin::BoardsController < ApplicationController
   def index
-    @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+    @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def show
     @board = Board.find(params[:id])
-    @answers = @board.answers
+    @answers = @board.answers.order(created_at: :desc).page(params[:page]).per(20)
   end
   
   def destroy

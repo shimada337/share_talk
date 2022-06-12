@@ -72,4 +72,9 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+  
+  ransacker :favorites_count do
+    query = '(SELECT COUNT(favorites.post_id) FROM favorites where favorites.post_id = posts.id GROUP BY favorites.post_id)'
+    Arel.sql(query)
+  end
 end
