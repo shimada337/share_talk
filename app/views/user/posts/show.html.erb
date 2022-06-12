@@ -7,7 +7,7 @@
   <div class="row">
     <%=image_tag @post.get_image(500,500), class: "rounded" %>
   </div>
-  <div class="my-3 border border-secondary rounded-lg p-2 post_body">
+  <div class="post_body">
     <%= safe_join(@post.body.split("\n"),tag(:br)) %>
   </div>
   <div class="row">

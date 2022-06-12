@@ -125,20 +125,18 @@ body {
   font-family: initial;
 }
 
-.top_heading {
+.linear-gradient {
   background: linear-gradient(transparent 60%, $cYellow 60%);
   display: inline-block;
 }
-
-.cards {
   
-  & .card_items {
-    
-    &:hover {
-      transform: scale(1.2); 
-      opacity: 0.7;
-      cursor: default;
-    }
+.card_items {
+  
+  &:hover {
+    transform: scale(1.2);
+    cursor: default;
+    color: $cGold;
+    font-family: 'Yomogi', cursive;
   }
 }
 
@@ -255,6 +253,10 @@ table {
 .post_body {
   overflow-wrap: break-word;
   border: dashed 2px $cBlue;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 8px;
+  color: $cBlack;
 }
 
 .board {

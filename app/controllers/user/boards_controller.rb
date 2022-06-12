@@ -11,7 +11,7 @@ class User::BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     @answer = Answer.new
-    @answers = @board.answers
+    @answers = @board.answers.order(created_at: :desc).page(params[:page]).per(20)
   end
   
   def create

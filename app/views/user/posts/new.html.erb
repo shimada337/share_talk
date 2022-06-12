@@ -3,13 +3,13 @@
   <%= render "layouts/errors", error: @post %>
   <%= form_with model: @post, url: '/posts', method: :post do |f| %>
     <div class="row">
-      <%= f.label :image, "投稿画像 (png、jpg、jpeg形式のファイルを選択してください)" %>
+      <%= f.label :image, "投稿画像 (png、jpg、jpeg形式のファイルを選択してください)", class: "linear-gradient" %>
     </div>
     <div class="row">
       <%= f.file_field :image, accept: "image/*" %>
     </div>
     <div class="row my-3">
-      <%= f.label :body, "本文" %>
+      <%= f.label :body, "本文", class: "linear-gradient" %>
       <%= f.text_area :body, class: "form-control", rows: 10, placeholder: '投稿本文を入力してください' %>
     </div>
     <div class="row">

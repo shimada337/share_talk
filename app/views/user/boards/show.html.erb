@@ -22,6 +22,7 @@
         <% end %>
       </div>
     <% end %>
+    <%= paginate @answers %>
   <% end %>
   
   <%= form_with model: [@board, @answer], method: :post do |f| %>
