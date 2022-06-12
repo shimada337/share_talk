@@ -34,7 +34,7 @@
   <div class="row mx-auto mb-5">
     <div class="col-4 text-center">
       <div class="card_items">
-        <h5>日常の出来事を投稿</h5>
+        <h5>シェアハウスの日常の出来事を投稿</h5>
       </div>
     </div>
     <div class="col-4 text-center">
@@ -74,9 +74,17 @@
   <h3 class="heading mt-5">シェアハウス掲示板</h3>
     <p class="font">
       シェアハウスならではの悩みや疑問ありませんか？？
-      そんな時にシェアハウス掲示板を利用しましょう！
+      そんな時にシェアハウス掲示板を利用しましょう！<br>
+      回答数をランキングで表示しているので気になる掲示板をすぐにチェックできます！
     </p>
   <div class="text-center">
-    <%= link_to '今すぐ始める', new_user_registration_path, class: "btn btn-lg btn-primary my-5" %>
+    <%= link_to '今すぐ始める', new_user_registration_path, class: "btn btn-lg btn-primary my-3" %>
+  </div>
+  
+
+  <h3>〜これからシェアハウスをしたいと考えている方へ〜</h3>
+  <p>ゲストログイン機能で投稿や掲示板を見てイメージをしてみよう！</p>
+  <div class="text-center">
+    <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "btn btn-lg btn-success my-2", method: :post %>
   </div>
 </div>

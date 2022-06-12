@@ -34,19 +34,19 @@
           <li>
             <button class="btns slide-bg mr-1">
               <span class="bg-darkcyan"></span>
-              <%= link_to user_notifications_path(current_user), class: "btn" do %>
-                <% if unchecked_notifications.any? %>
-                  <i class="fa-solid fa-circle n-circle"></i>
-                <% end %>
-                <i class="fa-solid fa-bell"></i> 通知
+              <%= link_to boards_path, class: "btn" do %>
+                <i class="fas fa-clipboard"></i> 掲示板
               <% end %>
             </button>
           </li>
           <li>
             <button class="btns slide-bg mr-1">
               <span class="bg-darkcyan"></span>
-              <%= link_to boards_path, class: "btn" do %>
-                <i class="fas fa-clipboard"></i> 掲示板
+              <%= link_to user_notifications_path(current_user), class: "btn" do %>
+                <% if unchecked_notifications.any? %>
+                  <i class="fa-solid fa-circle n-circle"></i>
+                <% end %>
+                <i class="fa-solid fa-bell"></i> 通知
               <% end %>
             </button>
           </li>
