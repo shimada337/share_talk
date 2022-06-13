@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-    <a class="navbar-brand" href="/"><%= image_tag 'sharetalk.png', size: '100x70' %></a>
+    <%= link_to root_path, data: {"turbolinks" => false} do %>
+      <%= image_tag 'sharetalk.png', size: '100x70' %>
+    <% end %>
     <button class="navbar-toggler collapsed hamburger-menu" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
     onclick="document.querySelector('body').classList.toggle('menu-open');">
       <!--<span class="navbar-toggler-icon">-->

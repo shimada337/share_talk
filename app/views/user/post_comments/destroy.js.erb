@@ -1,2 +1,2 @@
-$('.comment_area').html("<%= j(render 'user/post_comments/comments', post: @post, post_comments: @comment) %>")
+$('.comment_area').html("<%= j(render 'user/post_comments/comments', post: @post, post_comments: @comment, post_all_comments: @post_comments) %>")
 $('.flash-message').html("<%= j(render 'layouts/flash') %>");

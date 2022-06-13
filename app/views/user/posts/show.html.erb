@@ -26,7 +26,7 @@
     <% end %>
   </div>
     <div class="comment_area">
-      <%= render 'user/post_comments/comments', post_comments: @post_comments, post: @post %>
+      <%= render 'user/post_comments/comments', post_comments: @post_comments, post: @post, post_all_comments: @post_comments %>
     </div>
     
     <%= render 'user/post_comments/form', post: @post, post_comment: @post_comment %>

@@ -3,6 +3,7 @@ class User::PostCommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
+    @post_comments = @post.post_comments
     @comment = current_user.post_comments.new(post_comment_params)
     @comment.post_id = @post.id
     if @comment.save
@@ -15,6 +16,7 @@ class User::PostCommentsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
+    @post_comments = @post.post_comments
     @comment = PostComment.find_by(id: params[:id], post_id: params[:post_id])
     if @comment.destroy
      flash.now[:alert] = 'コメントを削除しました'

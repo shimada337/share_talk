@@ -16,3 +16,7 @@ document.addEventListener("turbolinks:load", function() {
 $(function(){
   setTimeout("$('.flash').fadeOut('slow')", 2000);
 });
+
+$(window).on('load',function(){
+  $(".three-dot-spinner").delay(1500).fadeOut('slow');
+});
