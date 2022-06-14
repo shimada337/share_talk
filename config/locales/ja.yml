@@ -57,3 +57,5 @@ ja:
        comment: "コメント"
       board:
        title: "質問"
+      admin:
+       email: "メールアドレス"

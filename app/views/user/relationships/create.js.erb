@@ -3,3 +3,6 @@ $('.user_follow').html("<%= j(render 'user/users/user_follow', user: @user) %>")
 $('.follow_count').html("<%= j(render 'user/users/follow_count', user: @user) %>")
 $('.user_chat').html("<%= j(render 'user/users/user_chat', user: @user) %>")
 $('.flash-message').html("<%= j(render 'layouts/flash') %>");
+$(function(){
+  setTimeout("$('.flash').fadeOut('slow')", 2000);
+});
