@@ -6,31 +6,31 @@ class User::UsersController < ApplicationController
   def search
     @search_user = User.ransack(params[:q])
   end
-   
+
   def index
     @search_users = @search_user.result.page(params[:page]).per(20).order(created_at: :desc)
   end
 
   def show
     @user = User.find(params[:id])
-    #タブメニュー、@userの投稿一覧
+    # タブメニュー、@userの投稿一覧
     @posts = @user.posts.all.order(created_at: :desc).page(params[:my_posts]).per(20)
     @all_posts = @user.posts.all
-    #タブメニュー、@userのハウスメンバー
+    # タブメニュー、@userのハウスメンバー
     @house_members = @user.house_members.all
-    #タブメニュー、@userのいいね一覧
-    @favorite_posts = Post.joins(:favorites).where(favorites: {user_id: @user.id}).order(created_at: :desc).page(params[:favorite_posts]).per(20)
+    # タブメニュー、@userのいいね一覧
+    @favorite_posts = Post.joins(:favorites).where(favorites: { user_id: @user.id }).order(created_at: :desc).page(params[:favorite_posts]).per(20)
     @all_favorite_posts = @user.favorites.all
   end
 
   def edit
     @user = User.find(params[:id])
-    #シェアハウスメンバーの登録
+    # シェアハウスメンバーの登録
     @house_member = HouseMember.new
-    #シェアハウスメンバーの一覧
+    # シェアハウスメンバーの一覧
     @house_members = HouseMember.where(user_id: @user.id).all
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -42,14 +42,14 @@ class User::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :self_introduction, :profile_image, :area, :position)
   end
-  
-  #url直打ち対策
+
+  # url直打ち対策
   def correct_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"

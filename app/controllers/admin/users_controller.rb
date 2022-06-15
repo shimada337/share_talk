@@ -1,11 +1,11 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   before_action :search
-  
+
   def search
     @search_user = User.ransack(params[:q])
   end
-  
+
   def index
     @search_users = @search_user.result.page(params[:page]).per(20).order(created_at: :desc)
   end
@@ -18,7 +18,7 @@ class Admin::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -28,9 +28,9 @@ class Admin::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :email, :self_introduction, :profile_image, :is_deleted)
   end

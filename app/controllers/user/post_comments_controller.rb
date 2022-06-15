@@ -19,7 +19,7 @@ class User::PostCommentsController < ApplicationController
     @post_comments = @post.post_comments
     @comment = PostComment.find_by(id: params[:id], post_id: params[:post_id])
     if @comment.destroy
-     flash.now[:alert] = 'コメントを削除しました'
+      flash.now[:alert] = 'コメントを削除しました'
     end
   end
 

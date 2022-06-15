@@ -7,7 +7,7 @@ class Admin::BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @answers = @board.answers.order(created_at: :desc).page(params[:page]).per(20)
   end
-  
+
   def destroy
     @board = Board.find(params[:id])
     @board.destroy
