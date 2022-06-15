@@ -1,4 +1,6 @@
 class Admin::AnswersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def destroy
     board = Board.find(params[:board_id])
     answer = Answer.find_by(id: params[:id], board_id: params[:board_id])

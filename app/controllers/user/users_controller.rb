@@ -14,13 +14,13 @@ class User::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # タブメニュー、@userの投稿一覧
-    @posts = @user.posts.all.order(created_at: :desc).page(params[:my_posts]).per(20)
-    @all_posts = @user.posts.all
+    @posts = @user.posts.order(created_at: :desc).page(params[:my_posts]).per(20)
+    @all_posts = @user.posts
     # タブメニュー、@userのハウスメンバー
-    @house_members = @user.house_members.all
+    @house_members = @user.house_members
     # タブメニュー、@userのいいね一覧
     @favorite_posts = Post.joins(:favorites).where(favorites: { user_id: @user.id }).order(created_at: :desc).page(params[:favorite_posts]).per(20)
-    @all_favorite_posts = @user.favorites.all
+    @all_favorite_posts = @user.favorites
   end
 
   def edit
@@ -28,7 +28,7 @@ class User::UsersController < ApplicationController
     # シェアハウスメンバーの登録
     @house_member = HouseMember.new
     # シェアハウスメンバーの一覧
-    @house_members = HouseMember.where(user_id: @user.id).all
+    @house_members = HouseMember.where(user_id: @user.id)
   end
 
   def update

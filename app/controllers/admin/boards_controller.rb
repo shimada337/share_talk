@@ -1,6 +1,8 @@
 class Admin::BoardsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
-    @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(20)
+    @boards = Board.includes(:user).order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def show

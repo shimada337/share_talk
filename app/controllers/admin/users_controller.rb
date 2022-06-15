@@ -12,7 +12,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @house_members = @user.house_members.all
+    @house_members = @user.house_members
   end
 
   def edit

@@ -3,7 +3,7 @@ class User::BoardsController < ApplicationController
 
   def index
     @board = Board.new
-    @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+    @boards = Board.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
     # 掲示板の回答数のランキング
     @board_answer_ranks = Board.find(Answer.group(:board_id).order('count(board_id) desc').limit(5).pluck(:board_id))
   end
