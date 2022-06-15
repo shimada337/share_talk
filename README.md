@@ -1,6 +1,7 @@
 # Share Talk
 
-<img width="1680" alt="スクリーンショット 2022-06-14 23 18 37" src="https://user-images.githubusercontent.com/99323712/173600386-651e587f-0a80-4fed-9a1d-4a339047dd00.png">
+## 動作デモ
+https://user-images.githubusercontent.com/99323712/173736152-fef1d49b-b7b2-43b4-b0fe-28785f5dab8b.mp4
 
 ## サイト概要
 シェアハウスをしている人達の投稿を閲覧できたり、自分で投稿することができるSNSサイトです。
@@ -34,9 +35,6 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-
-
-https://user-images.githubusercontent.com/99323712/173736152-fef1d49b-b7b2-43b4-b0fe-28785f5dab8b.mp4
 
 
 ## 使用素材
