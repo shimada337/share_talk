@@ -35,6 +35,10 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+
+https://user-images.githubusercontent.com/99323712/173736152-fef1d49b-b7b2-43b4-b0fe-28785f5dab8b.mp4
+
+
 ## 使用素材
 - Pixtabay（画像）
 - Canva (ロゴ素材)
