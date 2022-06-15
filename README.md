@@ -1,7 +1,7 @@
 # Share Talk
 
 ## 動作デモ
-https://user-images.githubusercontent.com/99323712/173736152-fef1d49b-b7b2-43b4-b0fe-28785f5dab8b.mp4
+https://user-images.githubusercontent.com/99323712/173738853-8ef36cbe-fc5b-40f8-90ba-d5904f6138be.mp4
 
 ## サイト概要
 シェアハウスをしている人達の投稿を閲覧できたり、自分で投稿することができるSNSサイトです。
@@ -32,6 +32,8 @@ https://user-images.githubusercontent.com/99323712/173736152-fef1d49b-b7b2-43b4-
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
+
+
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
