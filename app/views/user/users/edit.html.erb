@@ -3,23 +3,23 @@
   <%= render "layouts/errors", error: @user %>
   <%= form_with model: @user, method: :patch do |f| %>
     <div class="form-group">
-      <label for="user_name">ユーザーネーム</label>
+      <label for="user_name" class="linear-gradient">ユーザーネーム</label>
       <%= f.text_field :name, placeholder:"名前", class:"form-control name" %>
     </div>
     <div class="form-group">
-      <label for="user_image">プロフィール画像 (png、jpg、jpeg形式のファイルを選択してください)</label>
+      <label for="user_image" class="linear-gradient">プロフィール画像 (png、jpg、jpeg形式のファイルを選択してください)</label>
       <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class:"form-control-file user-image" %>
     </div>
     <div class="form-group">
-      <label for="self_introduction">自己紹介</label>
+      <label for="self_introduction" class="linear-gradient">自己紹介</label>
       <%= f.text_area :self_introduction, class:"form-control self_introduction", rows: 5, placeholder: "シェアハウスをしている目的や自己紹介をしましょう" %>
     </div>
     <div class="form-group">
-      <label for="area">シェアハウスしている都道府県</label>
+      <label for="area" class="linear-gradient">シェアハウスしている都道府県</label>
       <%= f.select :area, User.areas.keys, {}, class:"form-control area" %>
     </div>
     <div class="form-group">
-      <label for="position">職業</label>
+      <label for="position" class="linear-gradient">職業</label>
       <%= f.select :position, User.positions.keys, {}, class:"form-control position" %>
     </div>
     <div class="form-group">
@@ -59,11 +59,11 @@
    
   <h2 class="d-inline bg-light"><i class="fa-solid fa-circle-plus"></i> シェアハウスメンバー新規登録</h2>
   <%= form_with model: @house_member, url: '/users/@user/house_members', method: :post do |f| %>
-    <%= f.label :name, "シェアハウスメンバーネーム" %>
+    <%= f.label :name, "シェアハウスメンバーネーム", class: "linear-gradient" %>
     <%= f.text_field :name, class: "form-control mb-2", placeholder: "ニックネーム" %>
-    <%= f.label :introduction, "紹介" %>
+    <%= f.label :introduction, "紹介", class: "linear-gradient" %>
     <%= f.text_area :introduction, class: "form-control mb-2", rows: 5, placeholder: "どんな人ですか？" %>
-    <%= f.label :position, "職業" %>
+    <%= f.label :position, "職業", class: "linear-gradient" %>
     <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control mb-2" %>
     <%= f.submit '新規登録', class: "btn btn-success btn-border" %>
   <% end %>

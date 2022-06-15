@@ -1,11 +1,11 @@
 <div class="container">
   <h2 class="mt-3 rounded bg-info border border-dark d-inline-block p-1">シェアハウスメンバー編集</h2>
   <%= form_with model: [@user, @house_member], method: :patch do |f| %>
-    <%= f.label :name, "シェアハウスメンバーネーム" %>
+    <%= f.label :name, "シェアハウスメンバーネーム", class: "linear-gradient" %>
     <%= f.text_field :name, class: "form-control mb-2" %>
-    <%= f.label :introduction, "紹介" %>
+    <%= f.label :introduction, "紹介", class: "linear-gradient" %>
     <%= f.text_area :introduction, class: "form-control mb-2", rows: 5 %>
-    <%= f.label :position, "職業" %>
+    <%= f.label :position, "職業", class: "linear-gradient" %>
     <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control mb-2" %>
     <%= f.submit "更新", class: "btn btn-success btn-border" %>
   <% end %>
