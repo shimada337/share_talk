@@ -23,11 +23,11 @@
       <%= f.select :position, User.positions.keys, {}, class:"form-control position" %>
     </div>
     <div class="form-group">
-      <%= f.submit '更新', class:"btn btn-success" %>
+      <%= f.submit '更新', class:"btn btn-success btn-border" %>
     </div>
   <% end %>
     
-  <h2 class="d-inline bg-light"><i class="fa-solid fa-people-roof"></i> シェアハウスメンバー</h2>
+  <h2 class="d-inline-block bg-light mt-3"><i class="fa-solid fa-people-roof"></i> シェアハウスメンバー</h2>
   <% if @house_members.exists? %>
     <table class="table table-hover mb-5 mt-2">
       <thead>
@@ -65,6 +65,6 @@
     <%= f.text_area :introduction, class: "form-control mb-2", rows: 5, placeholder: "どんな人ですか？" %>
     <%= f.label :position, "職業" %>
     <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control mb-2" %>
-    <%= f.submit '新規登録', class: "btn btn-success" %>
+    <%= f.submit '新規登録', class: "btn btn-success btn-border" %>
   <% end %>
 </div>

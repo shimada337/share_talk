@@ -6,7 +6,7 @@
     <p class="font"><%= @board.title %></p>
     <%= @board.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
     <% if @board.user_id == current_user.id %>
-      <%= link_to "削除", board_path(@board), method: :delete, "data-confirm" => "本当に掲示板を削除しますか？", class: "btn btn-danger" %>
+      <%= link_to "削除", board_path(@board), method: :delete, "data-confirm" => "本当に掲示板を削除しますか？", class: "btn btn-danger btn-border" %>
     <% end %>
   </div>
   
@@ -30,6 +30,6 @@
   <%= form_with model: [@board, @answer], method: :post do |f| %>
     <%= f.label :body, "回答" %>
     <%= f.text_area :body, class: "form-control", placeholder: '回答内容を入力してください' %>
-    <%= f.submit '回答する', class: "btn btn-success mt-3" %>
+    <%= f.submit '回答する', class: "btn btn-success mt-3 btn-border" %>
   <% end %>
 </div>

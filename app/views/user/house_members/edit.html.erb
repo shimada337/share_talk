@@ -7,6 +7,6 @@
     <%= f.text_area :introduction, class: "form-control mb-2", rows: 5 %>
     <%= f.label :position, "職業" %>
     <%= f.select :position, HouseMember.positions.keys, {}, class: "form-control mb-2" %>
-    <%= f.submit "更新", class: "btn btn-success" %>
+    <%= f.submit "更新", class: "btn btn-success btn-border" %>
   <% end %>
 </div>

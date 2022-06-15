@@ -18,7 +18,7 @@
   <%= form_with model: @board, method: :post do |f| %>
   <%= f.label :title, "質問したいこと" %>
   <%= f.text_field :title, class: "form-control", placeholder: '質問を入力してください' %>
-  <%= f.submit '掲示板作成', class: "btn btn-success mt-3" %>
+  <%= f.submit '掲示板作成', class: "btn btn-success mt-3 btn-border" %>
 <% end %>
 
 <% if @board_answer_ranks.blank? %>
