@@ -1,5 +1,6 @@
 class User::HouseMembersController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_house_member, only: [:edit]
 
   def edit
     @user = current_user
@@ -38,5 +39,12 @@ class User::HouseMembersController < ApplicationController
 
   def house_member_params
     params.require(:house_member).permit(:name, :introduction, :position)
+  end
+  
+  def correct_house_member
+    @house_member = HouseMember.find(params[:id])
+    unless @house_member.user_id == current_user.id
+      redirect_to user_path(current_user.id), notice: 'あなた以外のシェアハウスメンバーの編集画面へは遷移できません'
+    end
   end
 end
