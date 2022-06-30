@@ -437,3 +437,10 @@ table {
   color: $cBlack;
   line-height: 2.5;
 }
+
+@media screen and (max-width: 425px) {
+  .share-top {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
