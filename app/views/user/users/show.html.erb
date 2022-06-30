@@ -8,10 +8,10 @@
     <% end %>
   <% end %>
   <div class="row py-2">
-    <div class="col-2 text-center">
+    <div class="col-12 col-sm-2 text-center">
       <%= image_tag @user.get_profile_image(100,100), class: "user_profile" %>
     </div>
-    <div class="col-8 p-2 user_introduction">
+    <div class="col-12 col-sm-8 p-2 user_introduction">
       <span class="text-secondary">ユーザーネーム： </span><%= @user.name %><br>
       <% if @user.name != "guestuser" %>
         <span class="text-secondary">自己紹介： </span>
