@@ -16,7 +16,7 @@
     </button>
   </div>
   
-  <div>
+  <div class="row">
     <%= sort_link(@search_post, :created_at, "古い順/新しい順") %> | 
     <%= sort_link(@search_post, :favorites_count, "いいね多い順/少ない順", default_order: :desc) %>
   </div>
@@ -24,13 +24,15 @@
     <% @search_posts.each do |post| %>
       <div class="mb-5">
         <div class="card p-3 mt-3">
-          <div class="row">
-            <%= image_tag post.user.get_profile_image(100,100), class: "mr-2 user_profile ml-2" %>
-            <%= link_to post.user.name, user_path(post.user.id) %>
+          <div>
+            <div class="row">
+              <%= image_tag post.user.get_profile_image(100,100), class: "mr-2 user_profile ml-2" %>
+              <%= link_to post.user.name, user_path(post.user.id), class: "no-wrap col-7" %>
+            </div>
           </div>
           <%= link_to post_path(post) do %>
             <div class="row posts">
-              <%= image_tag post.get_image(500,500), class: "mx-auto rounded" %>
+              <%= image_tag post.get_image(500,500), class: "mx-auto rounded img" %>
             </div>
           <% end %>
         <div class="post_body">
