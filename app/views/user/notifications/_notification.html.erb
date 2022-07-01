@@ -7,7 +7,7 @@
         <%= link_to user_path(visitor) do %>
           <%= image_tag visitor.get_profile_image(80,80), class: "user_profile mr-1" %>
         <% end %>
-        <%= link_to visitor.name, user_path(visitor) %>が
+        <%= link_to visitor.name, user_path(visitor), class: "no-wrap" %>が
       <% end %>
       <% case notification.action %>
         <% when 'follow' then %>
@@ -20,7 +20,7 @@
             <%= link_to "あなたの投稿", notification.post %>
           <% else %>
             <%= image_tag notification.post.user.get_profile_image(80,80), class: "user_profile mx-1" %>
-            <%= notification.post.user.name %>の
+            <span class="no-wrap"><%= notification.post.user.name %></span>の
             <%= link_to "投稿", post_path(notification.post) %>
           <% end %>
           にコメントしました

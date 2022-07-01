@@ -10,10 +10,10 @@
   <tbody>
     <% post.post_comments.each do |comment| %>
       <tr>
-        <td><%= link_to comment.user.name, user_path(comment.user) %></td>
+        <td class="no-wrap"><%= link_to comment.user.name, user_path(comment.user) %></td>
         <td>
-          <p><%= safe_join(comment.comment.split("\n"),tag(:br)) %></p>
-          <p><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+          <%= safe_join(comment.comment.split("\n"),tag(:br)) %><br>
+          <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
         </td>
         <% if comment.user == current_user %>
           <td><%= link_to "削除", post_post_comment_path(post, comment), method: :delete, "data-confirm" => "コメントを本当に削除しますか？", class: "btn btn-danger", remote: true %></td>

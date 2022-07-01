@@ -3,7 +3,7 @@
   <%= render "layouts/errors", error: @post %>
   <%= form_with model: @post, url: '/posts', method: :post do |f| %>
     <div class="row">
-      <%= f.label :image, "投稿画像 (png、jpg、jpeg形式のファイルを選択してください)", class: "linear-gradient" %>
+      <%= f.label :image, "投稿画像 (png、jpg、jpeg形式のファイルを選択してください)", class: "linear-gradient post-new" %>
     </div>
     <div class="row">
       <%= f.file_field :image, accept: "image/*" %>

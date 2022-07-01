@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="mt-3"><%= @user.name %> のフォロー中ユーザー <em>(<%= @user.followings.count %>人)</em></h2>
+  <h2 class="mt-3 no-wrap font-size"><%= @user.name %> のフォロー中ユーザー <em>(<%= @user.followings.count %>人)</em></h2>
   <%= render 'follow_list', users: @users %>
   <%= paginate @users %>
 </div>
