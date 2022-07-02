@@ -4,13 +4,13 @@
   <div class="registration-form p-3 my-3">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field row mb-2">
-        <div class="col-4 col-sm-2"><%= f.label :email, "メールアドレス" %></div>
-        <div class="col-8 col-sm-6"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></div>
+        <div class="col-12 col-sm-2"><%= f.label :email, "メールアドレス" %></div>
+        <div class="col-12 col-sm-6"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></div>
       </div>
     
       <div class="field row">
-        <div class="col-4 col-sm-2"><%= f.label :password, "パスワード" %></div>
-        <div class="col-8 col-sm-6"><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></div>
+        <div class="col-12 col-sm-2"><%= f.label :password, "パスワード" %></div>
+        <div class="col-12 col-sm-6"><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></div>
       </div>
     
       <div class="actions text-center">
